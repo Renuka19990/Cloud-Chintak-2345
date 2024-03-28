@@ -1,15 +1,16 @@
 // store.ts
 import { applyMiddleware, combineReducers, createStore, Store } from "redux";
 import {thunk} from "redux-thunk";
-import { authReducer } from "./reduxer";
+import { AuthReducer } from "./Reducers/AuthReducer";
+
 
 
 interface RootState {
-  auth: ReturnType<typeof authReducer>;
+  auth: ReturnType<typeof AuthReducer>;
 }
 
 const rootReducer = combineReducers<RootState>({
-  auth: authReducer,
+  auth: AuthReducer,
 });
 
 const store: Store<RootState> = createStore(rootReducer, applyMiddleware(thunk));

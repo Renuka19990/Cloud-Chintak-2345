@@ -1,5 +1,5 @@
 // reducer.ts
-import { AuthActionTypes, LOGIN_FAILURE, LOGIN_SUCCESS, LOGOUT } from "./actionType";
+import { AuthActionTypes, LOGIN_FAILURE, LOGIN_SUCCESS, LOGOUT } from "../actionType";
 
 interface User {
   email: string;
@@ -19,7 +19,7 @@ const initialUserState: InitialUserState = {
   error: null,
 };
 
-export const authReducer = (state = initialUserState, action:AuthActionTypes): InitialUserState => {
+export const AuthReducer = (state = initialUserState, action:AuthActionTypes): InitialUserState => {
   switch (action.type) {
     case LOGIN_SUCCESS:
       return {
