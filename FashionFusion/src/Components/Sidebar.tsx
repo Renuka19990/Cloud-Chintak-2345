@@ -22,6 +22,9 @@ import {
   MenuItem,
   MenuList,
   Image,
+  Button,
+  useColorMode,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import {
   FiHome,
@@ -33,9 +36,13 @@ import {
   FiBell,
   FiChevronDown,
 } from "react-icons/fi";
+import { BsSun, BsMoonStarsFill } from "react-icons/bs";
 import { IconType } from "react-icons";
 import FusionLogo from "../assets/FashionFusionLogo.png";
-
+import DarkFusionLogo from "../assets/FashionFusionDarkLogo.png";
+import { SearchIcon } from "@chakra-ui/icons";
+import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
+import { useState } from "react";
 interface LinkItemProps {
   name: string;
   icon: IconType;
@@ -63,29 +70,38 @@ const LinkItems: Array<LinkItemProps> = [
 ];
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
+  const { colorMode } = useColorMode();
   return (
     <Box
       transition="3s ease"
-      bg={useColorModeValue("white", "gray.900")}
+      bg={useColorModeValue("white", "black")}
       borderRight="1px"
-      borderRightColor={useColorModeValue("gray.200", "gray.700")}
+      borderRightColor={useColorModeValue("gray.200", "black")}
       w={{ base: "full", md: 60 }}
       pos="fixed"
       h="full"
       {...rest}
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        {/* <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo
-        </Text> */}
-        <Image
-          width="150px"
-          height="60px"
-          objectFit="cover"
-          src={FusionLogo}
-          alt="Fashion Fusion Logo"
-          backgroundColor="red"
-        />
+        {colorMode === "light" ? (
+          <Image
+            width="120px"
+            height="43.2px"
+            objectFit="cover"
+            src={FusionLogo}
+            alt="Fashion Fusion Logo"
+            backgroundColor="red"
+          />
+        ) : (
+          <Image
+            width="120px"
+            height="43px"
+            objectFit="cover"
+            src={DarkFusionLogo}
+            alt="Fashion Fusion Logo"
+          />
+        )}
+
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
@@ -113,8 +129,8 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
         role="group"
         cursor="pointer"
         _hover={{
-        //   bg: "cyan.400",
-        bg:"gray.300",
+          //   bg: "cyan.400",
+          bg: "gray.300",
           color: "white",
         }}
         {...rest}
@@ -135,16 +151,21 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
   );
 };
 
+
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
+  const { colorMode, toggleColorMode } = useColorMode();
+  const isLargeScreen = useBreakpointValue({ base: false, md: true });
+  
+  
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
       px={{ base: 4, md: 4 }}
       height="20"
       alignItems="center"
-      bg={useColorModeValue("white", "gray.900")}
+      bg={useColorModeValue("white", "black")}
       borderBottomWidth="1px"
-      borderBottomColor={useColorModeValue("gray.200", "gray.700")}
+      borderBottomColor={useColorModeValue("gray.200", "black")}
       justifyContent={{ base: "space-between", md: "flex-end" }}
       {...rest}
     >
@@ -155,23 +176,69 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         aria-label="open menu"
         icon={<FiMenu />}
       />
-
-      <Text
-        display={{ base: "flex", md: "none" }}
-        fontSize="2xl"
-        fontFamily="monospace"
-        fontWeight="bold"
-      >
-        Logo
-      </Text>
+      {colorMode === "light" ? (
+        <Image
+          display={{ base: "flex", md: "none" }}
+          width="89.3px"
+          height="32px"
+          objectFit="cover"
+          src={FusionLogo}
+          alt="Fashion Fusion Logo"
+        />
+      ) : (
+        <Image
+          display={{ base: "flex", md: "none" }}
+          width="89.3px"
+          height="32.7px"
+          objectFit="cover"
+          src={DarkFusionLogo}
+          alt="Fashion Fusion Logo"
+        />
+      )}
 
       <HStack spacing={{ base: "0", md: "6" }}>
-        <IconButton
-          size="lg"
-          variant="ghost"
-          aria-label="open menu"
-          icon={<FiBell />}
-        />
+        <Flex h="100vh" justifyContent="center" alignItems="center">
+          
+          {isLargeScreen ? (
+            <InputGroup marginRight="5px">
+              <InputLeftElement
+                pointerEvents="none"
+                children={<SearchIcon />}
+              />
+              <Input
+                focusBorderColor={colorMode === "light" ? "gray.700" : "white"}
+                type="text"
+                placeholder="Search..."
+              />
+            </InputGroup>
+          ) : (
+            <IconButton
+              aria-label="Search database"
+              variant="ghost"
+              size="md"
+              icon={<SearchIcon />}
+            />
+            
+          )}
+
+
+          <IconButton
+            size="md"
+            variant="ghost"
+            aria-label="open menu"
+            icon={<FiBell />}
+          />
+          <Button
+            aria-label="Toggle Color Mode"
+            onClick={toggleColorMode}
+            _focus={{ boxShadow: "none" }}
+            variant="ghost"
+            w="fit-content"
+            size="md"
+          >
+            {colorMode === "light" ? <BsMoonStarsFill /> : <BsSun />}
+          </Button>
+        </Flex>
         <Flex alignItems={"center"}>
           <Menu>
             <MenuButton
@@ -193,7 +260,11 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
                   ml="2"
                 >
                   <Text fontSize="sm">Justina Clark</Text>
-                  <Text fontSize="xs" color="gray.600">
+                  {/* <Text fontSize="xs" color="gray.600"> */}
+                  <Text
+                    fontSize="xs"
+                    color={colorMode === "light" ? "gray.600" : "white"}
+                  >
                     Admin
                   </Text>
                 </VStack>
