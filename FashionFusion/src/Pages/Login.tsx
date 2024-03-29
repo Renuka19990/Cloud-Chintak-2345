@@ -1,15 +1,19 @@
-import { Box, Button, FormControl, FormLabel, Heading, Input } from "@chakra-ui/react";
-import { useState } from "react";
+import React, { useState } from "react";
+import {
+  Box,
+  Button,
+  FormControl,
+  FormLabel,
+  Heading,
+  Input,
+} from "@chakra-ui/react";
 import { useSelector, useDispatch } from "react-redux";
 import { login, loginSuccess } from "../Redux/action";
+import { RootState } from "../types"; // Assuming RootState type is defined in a separate file
+// import { useNavigate } from "react-router-dom";
 
-interface RootState {
-  auth: {
-    isLoggedIn: boolean;
-  };
-}
-
-const Login = () => {
+const Login: React.FC = () => {
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isLoggedIn } = useSelector((state: RootState) => state.auth);
   const [form, setForm] = useState({
@@ -19,7 +23,7 @@ const Login = () => {
 
   const handleLogin = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
-console.log("login success");
+    console.log("login success");
 
     if (form.email === "admin@admin.com" && form.password === "admin") {
       const Admin = [
@@ -30,53 +34,59 @@ console.log("login success");
         },
       ];
       dispatch(loginSuccess(Admin));
+      // navigate("/admin");
     } else {
       dispatch(login(form.email, form.password));
     }
   };
+
   const [isTransformed, setIsTransformed] = useState<boolean>(false);
 
   const handleToggleForm = () => {
     setIsTransformed(!isTransformed);
   };
-  
+
   return (
     <Box
-    height={"100%"}
-    bg={"dimgrey"}
-    borderBottomEndRadius={"70%"}
-    // transform={isTransformed ? "translateY(-180px)" : ""}
-    transition=".8s ease-in-out"
-    onClick={handleToggleForm}
-    padding={10}
-    color={"white"}
-  > <FormControl>
-    <Heading transform={isTransformed ? "scale(.6)" : ""} >Login</Heading>
-    <FormLabel  transform={isTransformed ? "scale(.6)" : ""} >Email</FormLabel>
-    <Input
-      type="email"
-      placeholder="Email"
-      value={form.email}
-      onChange={(e) => setForm({ ...form, email: e.target.value })}
-    />
-    <FormLabel transform={isTransformed ? "scale(.6)" : ""}>Password</FormLabel>
-    <Input
-      type="password"
-      placeholder="Password"
-      value={form.password}
-      onChange={(e) => setForm({ ...form, password: e.target.value })}
-    />
-    <Button
-      onClick={handleLogin}
-      marginTop={10}
-      bg="black"
-      _hover={{ color: "black", bg:"silver" ,fontSize:"larger"}}
-      color="white"
+      height={"100%"}
+      bg={"silver"}
+      borderBottomEndRadius={"70%"}
+      transition=".8s ease-in-out"
+      onClick={handleToggleForm}
+      padding={10}
+      color={"Black"}
     >
-      Login
-    </Button>
-  </FormControl></Box>
-   
+      <FormControl>
+        <Heading transform={isTransformed ? "scale(.6)" : ""}>Login</Heading>
+        <FormLabel transform={isTransformed ? "scale(.6)" : ""}>
+          Email
+        </FormLabel>
+        <Input
+          type="email"
+          placeholder="Email"
+          value={form.email}
+          onChange={(e) => setForm({ ...form, email: e.target.value })}
+        />
+        <FormLabel transform={isTransformed ? "scale(.6)" : ""}>
+          Password
+        </FormLabel>
+        <Input
+          type="password"
+          placeholder="Password"
+          value={form.password}
+          onChange={(e) => setForm({ ...form, password: e.target.value })}
+        />
+        <Button
+          onClick={handleLogin}
+          marginTop={10}
+          bg="black"
+          _hover={{ color: "black", bg: "gray", fontSize: "larger" }}
+          color="white"
+        >
+          Login
+        </Button>
+      </FormControl>
+    </Box>
   );
 };
 

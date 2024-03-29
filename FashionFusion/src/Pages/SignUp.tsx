@@ -1,4 +1,11 @@
-import { Box, Button, FormControl, FormLabel, Heading, Input } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  FormControl,
+  FormLabel,
+  Heading,
+  Input,
+} from "@chakra-ui/react";
 import axios from "axios";
 import { useState, ChangeEvent, FormEvent } from "react";
 
@@ -44,8 +51,8 @@ const Signup: React.FC = () => {
       position="relative"
       width="100%"
       height="100%"
-      bg="dimgray" // Set background color to black
-      color="white" // Set text color to white
+      bg="silver" // Set background color to black
+      color="black" // Set text color to white
       borderTopLeftRadius={"60%"}
       padding={10}
     >
@@ -88,7 +95,7 @@ const Signup: React.FC = () => {
           cursor="pointer"
           onClick={handleSignup}
           bg="black"
-          _hover={{ color: "black",bg:"silver",fontSize:"larger" }}
+          _hover={{ color: "black", bg: "gray", fontSize: "larger" }}
           color="white"
           marginTop={10}
         >

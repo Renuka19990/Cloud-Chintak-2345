@@ -1,20 +1,16 @@
+import "./App.css";
 
-import { Box, Heading } from '@chakra-ui/react'
-import './App.css'
-
-
+import Navbar from "./Components/Navbar";
+import AllRoutes from "./Routes/AllRoutes";
 
 function App() {
-
-
   return (
     <>
- <Heading className="text-3xl font-bold underline bg-amber-300">
-      Hello world!
-    </Heading>
+      <Navbar />
+      <AllRoutes />
 
     </>
-  )
+  );
 }
 
-export default App
+export default App;

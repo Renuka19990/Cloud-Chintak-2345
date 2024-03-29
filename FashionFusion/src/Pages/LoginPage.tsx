@@ -1,7 +1,7 @@
-import { Box, Button } from '@chakra-ui/react';
-import React, { useState } from 'react';
-import Login from './Login';
-import Signup from './SignUp';
+import { Box, Button } from "@chakra-ui/react";
+import React, { useState } from "react";
+import Login from "./Login";
+import Signup from "./SignUp";
 
 const LoginPage = () => {
   const [showLogin, setShowLogin] = useState(true);
@@ -16,16 +16,17 @@ const LoginPage = () => {
       justifyContent="center"
       alignItems="center"
       minHeight="100vh"
-     
+      textAlign="center"
+      bgGradient="linear(gray.300, gray.500, black)"
     >
-      <Box 
-        width="550px" 
-        height="660px" 
-        bg="black" 
-        borderRadius="10px" 
+      <Box
+        width="550px"
+        height="660px"
+        bg="black"
+        borderRadius="40px"
         boxShadow="0 4px 6px rgba(0, 0, 0, 0.1)"
         position="relative"
-        overflow="hidden" 
+        overflow="hidden"
       >
         <Box
           transition="transform 0.5s ease-in-out"
@@ -35,7 +36,7 @@ const LoginPage = () => {
           top="0"
           left="0"
           right="0"
-          zIndex="2" 
+          zIndex="2"
         >
           <Login />
         </Box>
@@ -47,7 +48,7 @@ const LoginPage = () => {
           top="0"
           left="0"
           right="0"
-          zIndex="1" 
+          zIndex="1"
         >
           <Signup />
         </Box>
@@ -58,11 +59,11 @@ const LoginPage = () => {
           left="50%"
           transform="translateX(-50%)"
           zIndex="3"
-          bg="rgba(255, 255, 255, 0.8)"
+          bg="white"
           borderRadius="20px"
           boxShadow="0 2px 4px rgba(0, 0, 0, 0.1)"
         >
-          {showLogin ? "Signup" : "Login"}
+          {showLogin ? "Create a new Account" : "Already have an Account"}
         </Button>
       </Box>
     </Box>
