@@ -4,7 +4,7 @@ import SidebarWithHeader from "../Components/Sidebar";
 const Admin: React.FC = () => {
   return (
     <>
-      <div>Admin</div>
+     
       <SidebarWithHeader />
     </>
   );
