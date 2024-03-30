@@ -1,17 +1,22 @@
 import { Route, Routes } from "react-router-dom";
 import LoginPage from "../Pages/LoginPage";
-import Admin from "../Pages/Admin";
+import AdminDashboard from "../Pages/AdminDashboard";
 import Error from "../Pages/Error";
+
 import PrivateRoute from "./PrivateRoute";
 import Home from "../Pages/Home";
+import SingleMen from "../Pages/SingleMen";
 
 function AllRoutes() {
   return (
     <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path="/loginPage" element={<LoginPage />} />
-      <Route path="/admin" element={<PrivateRoute><Admin /></PrivateRoute>} />
+
+      <Route path="/admin" element={<AdminDashboard />} />
+
       <Route path="/*" element={<Error />} />
+      <Route path="/products/:id" element={<SingleMen />} /> 
       {/* <Route path='/women' element={<Women/>} /> */}
       {/* <Route path='/singleWomen/:id' element={<singleWomen/>} /> */}
       {/* <Route path=/'men' element={<Men/>} /> */}
