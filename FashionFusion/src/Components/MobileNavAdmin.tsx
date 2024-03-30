@@ -4,17 +4,11 @@ import {
   IconButton,
   Avatar,
   Box,
-  CloseButton,
   Flex,
   HStack,
   VStack,
-  Icon,
   useColorModeValue,
   Text,
-  Drawer,
-  DrawerContent,
-  useDisclosure,
-  BoxProps,
   FlexProps,
   Menu,
   MenuButton,
@@ -26,137 +20,20 @@ import {
   useColorMode,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import {
-  FiHome,
-  FiTrendingUp,
-  FiCompass,
-  FiStar,
-  FiSettings,
-  FiMenu,
-  FiBell,
-  FiChevronDown,
-} from "react-icons/fi";
+import { FiMenu, FiBell, FiChevronDown } from "react-icons/fi";
 import { BsSun, BsMoonStarsFill } from "react-icons/bs";
-import { IconType } from "react-icons";
 import FusionLogo from "../assets/FashionFusionLogo.png";
 import DarkFusionLogo from "../assets/FashionFusionDarkLogo.png";
 import { SearchIcon } from "@chakra-ui/icons";
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
-import { useState } from "react";
-interface LinkItemProps {
-  name: string;
-  icon: IconType;
-}
-
-interface NavItemProps extends FlexProps {
-  icon: IconType;
-  children: React.ReactNode;
-}
-
 interface MobileProps extends FlexProps {
   onOpen: () => void;
 }
 
-interface SidebarProps extends BoxProps {
-  onClose: () => void;
-}
-
-const LinkItems: Array<LinkItemProps> = [
-  { name: "Home", icon: FiHome },
-  { name: "Trending", icon: FiTrendingUp },
-  { name: "Explore", icon: FiCompass },
-  { name: "Favourites", icon: FiStar },
-  { name: "Settings", icon: FiSettings },
-];
-
-const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
-  const { colorMode } = useColorMode();
-  return (
-    <Box
-      transition="3s ease"
-      bg={useColorModeValue("white", "black")}
-      borderRight="1px"
-      borderRightColor={useColorModeValue("gray.200", "black")}
-      w={{ base: "full", md: 60 }}
-      pos="fixed"
-      h="full"
-      {...rest}
-    >
-      <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        {colorMode === "light" ? (
-          <Image
-            width="120px"
-            height="43.2px"
-            objectFit="cover"
-            src={FusionLogo}
-            alt="Fashion Fusion Logo"
-            backgroundColor="red"
-          />
-        ) : (
-          <Image
-            width="120px"
-            height="43px"
-            objectFit="cover"
-            src={DarkFusionLogo}
-            alt="Fashion Fusion Logo"
-          />
-        )}
-
-        <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
-      </Flex>
-      {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon}>
-          {link.name}
-        </NavItem>
-      ))}
-    </Box>
-  );
-};
-
-const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
-  return (
-    <Box
-      as="a"
-      href="#"
-      style={{ textDecoration: "none" }}
-      _focus={{ boxShadow: "none" }}
-    >
-      <Flex
-        align="center"
-        p="4"
-        mx="4"
-        borderRadius="lg"
-        role="group"
-        cursor="pointer"
-        _hover={{
-          //   bg: "cyan.400",
-          bg: "gray.300",
-          color: "white",
-        }}
-        {...rest}
-      >
-        {icon && (
-          <Icon
-            mr="4"
-            fontSize="16"
-            _groupHover={{
-              color: "white",
-            }}
-            as={icon}
-          />
-        )}
-        {children}
-      </Flex>
-    </Box>
-  );
-};
-
-
-const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
+export const MobileNavAdmin = ({ onOpen, ...rest }: MobileProps) => {
   const { colorMode, toggleColorMode } = useColorMode();
   const isLargeScreen = useBreakpointValue({ base: false, md: true });
-  
-  
+
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
@@ -198,7 +75,6 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 
       <HStack spacing={{ base: "0", md: "6" }}>
         <Flex h="100vh" justifyContent="center" alignItems="center">
-          
           {isLargeScreen ? (
             <InputGroup marginRight="5px">
               <InputLeftElement
@@ -218,9 +94,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
               size="md"
               icon={<SearchIcon />}
             />
-            
           )}
-
 
           <IconButton
             size="md"
@@ -289,35 +163,3 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
     </Flex>
   );
 };
-
-const SidebarWithHeader = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
-  return (
-    <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
-      <SidebarContent
-        onClose={() => onClose}
-        display={{ base: "none", md: "block" }}
-      />
-      <Drawer
-        isOpen={isOpen}
-        placement="left"
-        onClose={onClose}
-        returnFocusOnClose={false}
-        onOverlayClick={onClose}
-        size="full"
-      >
-        <DrawerContent>
-          <SidebarContent onClose={onClose} />
-        </DrawerContent>
-      </Drawer>
-      {/* mobilenav */}
-      <MobileNav onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4">
-        {/* Content */}
-      </Box>
-    </Box>
-  );
-};
-
-export default SidebarWithHeader;
