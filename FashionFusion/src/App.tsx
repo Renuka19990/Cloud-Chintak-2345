@@ -1,17 +1,15 @@
+import MyComponentB from './Components/Card'
 
-import { Heading } from '@chakra-ui/react'
-import './App.css'
 
-function App() {
-
+const App = () => {
+  
 
   return (
-    <>
- <Heading className="text-3xl font-bold underline bg-amber-300">
-      Hello world!
-    </Heading>
-    </>
-  )
-}
+    <div>
+      <MyComponentB/>
+    </div>
+  );
+};
 
-export default App
+export default App;
+
