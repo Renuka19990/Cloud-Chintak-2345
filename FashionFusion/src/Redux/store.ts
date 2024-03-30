@@ -1,4 +1,4 @@
-// store.ts
+
 import { applyMiddleware, combineReducers, createStore, Store } from "redux";
 import {thunk} from "redux-thunk";
 import { AuthReducer } from "./Reducers/AuthReducer";
