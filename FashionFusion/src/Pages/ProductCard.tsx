@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Box, Image, Text, IconButton, Flex, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Button } from '@chakra-ui/react';
 import { FaShoppingCart, FaHeart } from 'react-icons/fa';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 interface Product {
+  id:number;
   name: string;
   price: number;
   imageURL: string;
@@ -17,7 +19,7 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const { name, price, imageURL, description, stock, rating } = product;
+  const {id, name, price, imageURL, description, stock, rating } = product;
   const [cartClicked, setCartClicked] = useState(false);
   const [wishlistClicked, setWishlistClicked] = useState(false);
 //   const [cartItemCount, setCartItemCount] = useState<number | null>(null);
@@ -65,6 +67,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   };
 
   return (
+    <Link to={`/products/${id}`}>
     <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden" m={4}>
       <Image src={imageURL} alt={name} />
 
@@ -130,6 +133,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </ModalContent>
       </Modal>
     </Box>
+    </Link>
   );
 };
 

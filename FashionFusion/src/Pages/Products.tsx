@@ -36,7 +36,7 @@ const Products: React.FC = () => {
   return (
     <div>
       <ProductsGrid products={data} />
-
+      
       {/* <ul>
         {data.map((el: any, index: number) => (
           <li key={index}>{el.name}</li>
