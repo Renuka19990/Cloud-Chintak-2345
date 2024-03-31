@@ -47,7 +47,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       });
       setCartClicked(true);
       setShowModal(true);
-      setModalText('Item added to cart successfully.');
+      setModalText('Item added to cart successfully.🎉');
     } catch (error) {
       console.error('Error adding to cart:', error);
     }
@@ -60,7 +60,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       });
       setWishlistClicked(true);
       setShowModal(true);
-      setModalText('Item added to wishlist successfully.');
+      setModalText('Item added to wishlist successfully. 🥳');
     } catch (error) {
       console.error('Error adding to wishlist:', error);
     }
@@ -68,8 +68,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   return (
     <Link to={`/products/${id}`}>
-    <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden" m={4}>
-      <Image src={imageURL} alt={name} />
+    <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden" m={4} >
+      <Image src={imageURL} alt={name}  />
 
       <Box p="6" textAlign="center">
         <Text
@@ -82,17 +82,17 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           {name}
         </Text>
 
-        <Text mt="2" fontSize="sm" color="gray.600" noOfLines={2} isTruncated>
+        {/* <Text mt="2" fontSize="sm" color="gray.600" noOfLines={2} isTruncated>
           {description}
-        </Text>
+        </Text> */}
 
         <Text mt="2" fontSize="lg" color="teal.600">
           ${price}
         </Text>
 
-        <Text mt="2" fontSize="sm" color={stock > 0 ? 'green.600' : 'red.600'}>
+        {/* <Text mt="2" fontSize="sm" color={stock > 0 ? 'green.600' : 'red.600'}>
           {stock > 0 ? 'In Stock' : 'Out of Stock'}
-        </Text>
+        </Text> */}
         
         <Text mt="2" fontSize="sm">
           Rating: {rating}

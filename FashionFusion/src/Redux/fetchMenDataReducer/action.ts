@@ -41,7 +41,7 @@ export const fetchData = (): ThunkAction<void, any, null, Action> => {
   return async (dispatch) => {
     dispatch(fetchDataRequestAction());
     try {
-      const res = await axios.get('https://mock-server-app-1.onrender.com/mens');
+      const res = await axios.get('https://mock-server-app-1.onrender.com/womens');
       dispatch(fetchDataSuccessAction(res.data));
     } catch (error:any) {
       dispatch(fetchDataFailureAction(error.message));
