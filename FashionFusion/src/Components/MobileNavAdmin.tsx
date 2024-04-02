@@ -26,6 +26,7 @@ import FusionLogo from "../assets/FashionFusionLogo.png";
 import DarkFusionLogo from "../assets/FashionFusionDarkLogo.png";
 import { SearchIcon } from "@chakra-ui/icons";
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
+import { NavLink } from "react-router-dom";
 interface MobileProps extends FlexProps {
   onOpen: () => void;
 }
@@ -133,7 +134,7 @@ export const MobileNavAdmin = ({ onOpen, ...rest }: MobileProps) => {
                   spacing="1px"
                   ml="2"
                 >
-                  <Text fontSize="sm">Justina Clark</Text>
+                  <Text fontSize="sm">Renuka Jagarwal</Text>
                   {/* <Text fontSize="xs" color="gray.600"> */}
                   <Text
                     fontSize="xs"
@@ -148,14 +149,34 @@ export const MobileNavAdmin = ({ onOpen, ...rest }: MobileProps) => {
               </HStack>
             </MenuButton>
             <MenuList
-              bg={useColorModeValue("white", "gray.900")}
-              borderColor={useColorModeValue("gray.200", "gray.700")}
+              bg={useColorModeValue("white", "gray.700")}
+              borderColor={useColorModeValue("gray.200", "white.200")}
             >
-              <MenuItem>Profile</MenuItem>
-              <MenuItem>Settings</MenuItem>
-              <MenuItem>Billing</MenuItem>
-              <MenuDivider />
-              <MenuItem>Sign out</MenuItem>
+              <MenuItem
+                _hover={{
+                  bg: "gray.300",
+                  color: "white",
+                }}
+              >
+                Profile
+              </MenuItem>
+              <MenuItem
+                _hover={{
+                  bg: "gray.300",
+                  color: "white",
+                }}
+              >
+                Settings
+              </MenuItem>
+
+              <MenuItem
+                _hover={{
+                  bg: "gray.300",
+                  color: "white",
+                }}
+              >
+                <NavLink to="/loginPage">Sign out</NavLink>
+              </MenuItem>
             </MenuList>
           </Menu>
         </Flex>

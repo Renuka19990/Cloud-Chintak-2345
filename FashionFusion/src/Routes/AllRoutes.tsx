@@ -6,6 +6,10 @@ import Error from "../Pages/Error";
 import PrivateRoute from "./PrivateRoute";
 import Home from "../Pages/Home";
 import SingleMen from "../Pages/SingleMen";
+import Home from "../Pages/Home";
+import AdminUsers from "../Pages/AdminUsers";
+import AdminProducts from "../Pages/AdminProducts";
+import Settings from "../Pages/Settings";
 
 function AllRoutes() {
   return (
@@ -13,7 +17,13 @@ function AllRoutes() {
       <Route path='/' element={<Home/>}/>
       <Route path="/loginPage" element={<LoginPage />} />
 
-      <Route path="/admin" element={<AdminDashboard />} />
+      <Route path="/adminDashboard" element={<AdminDashboard />} />
+      <Route path="/adminUsers" element={<AdminUsers />} />
+      <Route path="/adminProducts" element={<AdminProducts />} />
+      <Route path="/settings" element={<Settings />} />
+
+
+     
 
       <Route path="/*" element={<Error />} />
       <Route path="/products/:id" element={<SingleMen />} /> 
