@@ -37,7 +37,7 @@ const links = [
   {
     id: 4,
     name: "Admin",
-    link: "/admin",
+    link: "/adminDashboard",
   },
 ];
 
