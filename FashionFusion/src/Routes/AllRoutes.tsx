@@ -2,6 +2,9 @@ import { Route, Routes } from "react-router-dom";
 import LoginPage from "../Pages/LoginPage";
 import AdminDashboard from "../Pages/AdminDashboard";
 import Error from "../Pages/Error";
+
+import PrivateRoute from "./PrivateRoute";
+import Home from "../Pages/Home";
 import SingleMen from "../Pages/SingleMen";
 import Home from "../Pages/Home";
 import AdminUsers from "../Pages/AdminUsers";
@@ -13,10 +16,15 @@ function AllRoutes() {
     <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path="/loginPage" element={<LoginPage />} />
+
       <Route path="/adminDashboard" element={<AdminDashboard />} />
       <Route path="/adminUsers" element={<AdminUsers />} />
       <Route path="/adminProducts" element={<AdminProducts />} />
       <Route path="/settings" element={<Settings />} />
+
+
+     
+
       <Route path="/*" element={<Error />} />
       <Route path="/products/:id" element={<SingleMen />} /> 
       {/* <Route path='/women' element={<Women/>} /> */}

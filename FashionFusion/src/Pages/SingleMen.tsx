@@ -97,6 +97,7 @@ const SingleProduct = () => {
       p="6"
       mx="auto"
       mt="20px"
+      mb="40px"
     >
       {/* Large Screen Layout */}
       <Flex alignItems="center" display={{ base: "none", md: "flex" }}>
@@ -231,11 +232,12 @@ const SingleProduct = () => {
       <Heading mt={20} textAlign="center" lineHeight="tall">
         <Highlight
           query="LIKE"
-          styles={{ px: "2", py: "1", rounded: "full", bg: "red.100" }}
+          styles={{ px: "1.5", py: "1", rounded: "20px", bg: "red.100" }}
         >
           YOU MAY ALSO LIKE ❤️
         </Highlight>
       </Heading>
+      
     </Box>
   );
 };
