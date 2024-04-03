@@ -1,13 +1,17 @@
-import MyComponentB from './Components/Card'
+import MyComponentF from "./Components/Favorite";
+
+
 
 
 const App = () => {
   
 
   return (
-    <div>
-      <MyComponentB/>
-    </div>
+  <>
+   <MyComponentF/>
+  </>
+    
+  
   );
 };
 
