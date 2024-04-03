@@ -8,12 +8,19 @@ import {
   Input,
 } from "@chakra-ui/react";
 import { useSelector, useDispatch } from "react-redux";
-import { login, loginSuccess } from "../Redux/action";
-import { RootState } from "../types"; // Assuming RootState type is defined in a separate file
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import {  loginData, loginSuccess } from "../Redux/action";
+
+ // Import your async thunk action creator here
+
+interface RootState {
+  auth: {
+    isLoggedIn: boolean;
+  };
+}
 
 const Login: React.FC = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isLoggedIn } = useSelector((state: RootState) => state.auth);
   const [form, setForm] = useState({
@@ -21,9 +28,8 @@ const Login: React.FC = () => {
     password: "",
   });
 
-  const handleLogin = (e: React.FormEvent<HTMLButtonElement>) => {
+  const handleLogin = async (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    console.log("login success");
 
     if (form.email === "admin@admin.com" && form.password === "admin") {
       const Admin = [
@@ -34,9 +40,14 @@ const Login: React.FC = () => {
         },
       ];
       dispatch(loginSuccess(Admin));
-      // navigate("/admin");
+      navigate("/adminDashboard");
     } else {
-      dispatch(login(form.email, form.password));
+      try {
+        // Dispatch the async thunk action creator with the required properties
+        await dispatch(loginData({ email: form.email, password: form.password, navigate }));
+      } catch (error) {
+        alert(error);
+      }
     }
   };
 
@@ -50,15 +61,16 @@ const Login: React.FC = () => {
     <Box
       height={"100%"}
       bg={"silver"}
-      borderBottomEndRadius={"70%"}
+      borderBottomEndRadius={"650%"}
       transition=".8s ease-in-out"
       onClick={handleToggleForm}
-      padding={10}
+      paddingX={20}
+      paddingY={10}
       color={"Black"}
     >
       <FormControl>
-        <Heading transform={isTransformed ? "scale(.6)" : ""}>Login</Heading>
-        <FormLabel transform={isTransformed ? "scale(.6)" : ""}>
+        <Heading transform={isTransformed ? "scale(.7)" : ""}>Login</Heading>
+        <FormLabel transform={isTransformed ? "scale(.7)" : ""}>
           Email
         </FormLabel>
         <Input
@@ -67,7 +79,7 @@ const Login: React.FC = () => {
           value={form.email}
           onChange={(e) => setForm({ ...form, email: e.target.value })}
         />
-        <FormLabel transform={isTransformed ? "scale(.6)" : ""}>
+        <FormLabel transform={isTransformed ? "scale(.7)" : ""}>
           Password
         </FormLabel>
         <Input
@@ -80,7 +92,7 @@ const Login: React.FC = () => {
           onClick={handleLogin}
           marginTop={10}
           bg="black"
-          _hover={{ color: "black", bg: "gray", fontSize: "larger" }}
+          _hover={{ color: "black", bg: "gray", fontSize: "larger", boxShadow: "8px 8px 8px rgb(33, 33, 33)" }}
           color="white"
         >
           Login

@@ -64,57 +64,6 @@ const initialState: State = {
   // orders:[]
 };
 
-// export const productReducer = (state: State = initState, { type, payload }: { type: string; payload: any }): State => {
-//   switch (type) {
-//     case IS_LOADING:
-//       return {
-//         ...state,
-//         isLoading: true,
-//         isError: false,
-//         mensProducts: [],
-//         womenProducts: [],
-//         kidsProducts: [],
-//         users: [],
-//       };
-
-//     case IS_ERROR:
-//       return {
-//         ...state,
-//         isLoading: false,
-//         mensProducts: [],
-//         womenProducts: [],
-//         kidsProducts: [],
-//         users: [],
-//         isError: true,
-//       };
-
-//     case IS_MEN_SUCCESS:
-//       return {
-//         ...state,
-//         isLoading: false,
-//         mensProducts: payload,
-//         isError: false,
-//       };
-//     case IS_WOMEN_SUCCESS:
-//       return {
-//         ...state,
-//         isLoading: false,
-//         womenProducts: payload,
-//         isError: false,
-//       };
-//     case IS_KIDS_SUCCESS:
-//       return {
-//         ...state,
-//         isLoading: false,
-//         kidsProducts: payload,
-//         isError: false,
-//       };
-//     case IS_USERS_SUCCESS:
-//       return { ...state, isLoading: false, users: payload, isError: false };
-//     default:
-//       return state;
-//   }
-// };
 
 const productReducer = createSlice({
   name: "productReducer",
@@ -195,23 +144,7 @@ const productReducer = createSlice({
   },
 });
 
-// export const getMenData = (url: string): ThunkAction<void, any,null, Action<string>> => async (dispatch) => {
-//   try {
-//     dispatch(getLoading());
 
-//     let res = await fetch(url);
-//     let data = await res.json();
-
-//     if (Object.keys(data).length === 0) {
-//       dispatch(getError());
-//     } else {
-//       dispatch(getMenSuccess(data));
-//     }
-//   } catch (error) {
-//     console.log(error);
-//     dispatch(getError());
-//   }
-// };
 
 export const getMenData = createAsyncThunk(
   "productReducer/getMenData",
@@ -247,23 +180,7 @@ export const getWomenData = createAsyncThunk(
   }
 );
 
-// export const getKidData = (url: string): ThunkAction<void, any, null, Action<string>> => async (dispatch) => {
-//   try {
-//     dispatch(getLoading());
 
-//     let res = await fetch(url);
-//     let data = await res.json();
-
-//     if (Object.keys(data).length === 0) {
-//       dispatch(getError());
-//     } else {
-//       dispatch(getKidSuccess(data));
-//     }
-//   } catch (error) {
-//     console.log(error);
-//     dispatch(getError());
-//   }
-// };
 export const getKidData = createAsyncThunk(
   "productReducer/getKidData",
   async (url: string) => {
@@ -282,12 +199,5 @@ export const getUserData = createAsyncThunk(
   }
 );
 
-// export const getOrderData = createAsyncThunk(
-//   "productReducer/getOrderData",
-//   async (url: string) => {
-//     const res = await fetch(url);
-//     const data = await res.json();
-//     return data;
-//   }
-// );
+
 export default productReducer.reducer;

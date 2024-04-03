@@ -7,11 +7,11 @@ import AllRoutes from "./Routes/AllRoutes";
 function App() {
   const location = useLocation();
   console.log(location);
-  // const isAdminRoute = location.pathname === '/adminDashboard'
+  const isAdminRoute = location.pathname === '/adminDashboard';
   return (
     <>
-      {/* {!isAdminRoute && <Navbar />} */}
-      <Navbar />
+      {!isAdminRoute && <Navbar />}
+      {/* <Navbar /> */}
       <AllRoutes />
     </>
   );

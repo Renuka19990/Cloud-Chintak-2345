@@ -2,8 +2,11 @@ import { Route, Routes } from "react-router-dom";
 import LoginPage from "../Pages/LoginPage";
 import AdminDashboard from "../Pages/AdminDashboard";
 import Error from "../Pages/Error";
-import SingleMen from "../Pages/SingleMen";
+
+//import PrivateRoute from "./PrivateRoute";
 import Home from "../Pages/Home";
+import SingleMen from "../Pages/SingleMen";
+
 import AdminUsers from "../Pages/AdminUsers";
 import AdminProducts from "../Pages/AdminProducts";
 import Settings from "../Pages/Settings";
@@ -14,6 +17,7 @@ function AllRoutes() {
     <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path="/loginPage" element={<LoginPage />} />
+
       <Route path="/adminDashboard" element={<AdminDashboard />} />
       <Route path="/adminUsers" element={<AdminUsers />} />
       <Route path="/adminProducts" element={<AdminProducts />} />
