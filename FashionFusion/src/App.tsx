@@ -1,9 +1,8 @@
+
 import { useLocation } from "react-router-dom";
 import "./App.css";
-
 import Navbar from "./Components/Navbar";
 import AllRoutes from "./Routes/AllRoutes";
-
 function App() {
   const location = useLocation();
   console.log(location);
@@ -19,3 +18,4 @@ function App() {
 }
 
 export default App;
+
