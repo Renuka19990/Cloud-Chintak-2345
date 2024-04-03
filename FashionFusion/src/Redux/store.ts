@@ -1,20 +1,14 @@
 
 
-import { applyMiddleware, combineReducers, createStore, Store } from "redux";
-import {thunk} from "redux-thunk";
-import { AuthReducer } from "./Reducers/AuthReducer";
-import { dataReducer } from "./fetchMenDataReducer/dataReducer";
 
-
-
-
-import productReducer from "./adminDataReducer/reducer"
+import { loginReducer } from "./Reducers/AuthReducer";
+// import productReducer from "./adminDataReducer/reducer"
 import {configureStore} from "@reduxjs/toolkit";
  const store = configureStore({
   reducer:{
-    // auth: AuthReducer,
+     auth: loginReducer,
     // data:dataReducer,
-    Products: productReducer
+    // Products: productReducer
   },
 });
 
