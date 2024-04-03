@@ -6,7 +6,7 @@ import { Box, Image, Text, Button, Flex, Icon, useToast, Heading, Highlight, Ske
 import { StarIcon } from '@chakra-ui/icons';
 import { FaHeart } from 'react-icons/fa';
 
-const SingleProduct = () => {
+const SingleWomen = () => {
   const { id } = useParams<{ id: string }>();
   const [product, setProduct] = useState<any>(null);
   const [isAddedToWishlist, setIsAddedToWishlist] = useState<boolean>(false);
@@ -16,7 +16,7 @@ const SingleProduct = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`https://mock-server-app-1.onrender.com/mens/${id}`);
+        const response = await axios.get(`https://mock-server-app-1.onrender.com/women/${id}`);
         setProduct(response.data);
       } catch (error) {
         console.error('Error fetching product:', error);
@@ -224,4 +224,4 @@ const SingleProduct = () => {
   );
 };
 
-export default SingleProduct;
+export default SingleWomen;
