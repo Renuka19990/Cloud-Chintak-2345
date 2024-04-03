@@ -11,10 +11,10 @@ import {
 } from "@chakra-ui/react";
 import {
   FiHome,
-  FiTrendingUp,
-  FiCompass,
-  FiStar,
+  FiGrid,
   FiSettings,
+  FiUsers,
+  FiBox
 } from "react-icons/fi";
 
 import { IconType } from "react-icons";
@@ -35,9 +35,9 @@ interface SidebarProps extends BoxProps {
 
 const LinkItems: Array<LinkItemProps> = [
   { name: "Home", icon: FiHome, path: "/" },
-  { name: "Trending", icon: FiTrendingUp, path: "/trending" },
-  { name: "Products", icon: FiCompass, path: "/adminProduct" },
-  { name: "Favourites", icon: FiStar, path: "/favourite" },
+  { name: "Dashboard", icon: FiGrid, path: "/adminDashboard" },
+  { name: "Products", icon: FiBox, path: "/adminProducts" },
+  { name: "Users", icon: FiUsers, path: "/adminUsers" },
   { name: "Settings", icon: FiSettings, path: "/settings" },
 ];
 export const SidebarContentAdmin = ({ onClose, ...rest }: SidebarProps) => {

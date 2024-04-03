@@ -12,8 +12,8 @@ interface NavItemProps extends FlexProps {
 export const NavItemAdmin = ({ icon, children, ...rest }: NavItemProps) => {
   return (
     <Box
-      as="a"
-      href="#"
+      // as="a"
+      // href="#"
       style={{ textDecoration: "none" }}
       _focus={{ boxShadow: "none" }}
     >
