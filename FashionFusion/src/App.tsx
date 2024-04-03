@@ -12,6 +12,7 @@ function App() {
       {!isAdminRoute && <Navbar />}
      
       <AllRoutes />
+      
     </>
   );
 }
