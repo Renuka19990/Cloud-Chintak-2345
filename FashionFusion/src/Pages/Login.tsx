@@ -8,8 +8,10 @@ import {
   Input,
 } from "@chakra-ui/react";
 import { useSelector, useDispatch } from "react-redux";
-import { login, loginSuccess } from "../Redux/action";
 import { useNavigate } from "react-router-dom";
+import {  loginData, loginSuccess } from "../Redux/action";
+
+ // Import your async thunk action creator here
 
 interface RootState {
   auth: {
@@ -38,10 +40,11 @@ const Login: React.FC = () => {
         },
       ];
       dispatch(loginSuccess(Admin));
-      navigate("/admin");
+      navigate("/adminDashboard");
     } else {
       try {
-        await dispatch(login(form.email, form.password, navigate)); // Pass navigate here
+        // Dispatch the async thunk action creator with the required properties
+        await dispatch(loginData({ email: form.email, password: form.password, navigate }));
       } catch (error) {
         alert(error);
       }
@@ -58,10 +61,11 @@ const Login: React.FC = () => {
     <Box
       height={"100%"}
       bg={"silver"}
-      borderBottomEndRadius={"70%"}
+      borderBottomEndRadius={"650%"}
       transition=".8s ease-in-out"
       onClick={handleToggleForm}
-      padding={10}
+      paddingX={20}
+      paddingY={10}
       color={"Black"}
     >
       <FormControl>
@@ -88,7 +92,7 @@ const Login: React.FC = () => {
           onClick={handleLogin}
           marginTop={10}
           bg="black"
-          _hover={{ color: "black", bg: "gray", fontSize: "larger" ,boxShadow: "8px 8px 8px rgb(33, 33, 33)"}}
+          _hover={{ color: "black", bg: "gray", fontSize: "larger", boxShadow: "8px 8px 8px rgb(33, 33, 33)" }}
           color="white"
         >
           Login

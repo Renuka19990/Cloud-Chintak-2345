@@ -1,110 +1,218 @@
+import React, {  useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import {
   Box,
   Flex,
-  Avatar,
-  Text,
-  Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
+  Spacer,
+
+  Collapse,
   useDisclosure,
+  useMediaQuery,
   useColorModeValue,
-  Stack,
   useColorMode,
-  Center,
+  Button,
+  Image,
+
+  Stack,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerHeader,
+  DrawerBody,
+  chakra,
+  VisuallyHidden,
 } from "@chakra-ui/react";
-import { MoonIcon, SunIcon } from "@chakra-ui/icons";
-import { NavLink } from "react-router-dom";
+import { MoonIcon, SunIcon, HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import FusionLogo from "../assets/FashionFusionLogo.png";
+import DarkFusionLogo from "../assets/FashionFusionDarkLogo.png";
+import { CiUser, CiSearch, CiHeart, CiShoppingCart } from "react-icons/ci";
+import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa6";
 
-const links = [
-  {
-    id: 1,
-    name: "Home",
-    link: "/",
-  },
-  {
-    id: 2,
-    name: "women",
-    link: "/women",
-  },
-  {
-    id: 3,
-    name: "Men",
-    link: "/men",
-  },
-  {
-    id: 4,
-    name: "Admin",
-    link: "/adminDashboard",
-  },
-];
-
-const Navbar = () => {
+const Navbar: React.FC = () => {
+  const { isOpen, onToggle, onClose } = useDisclosure();
+  const [placement] = useState("left");
+  const [isNormalScreen] = useMediaQuery("(min-width: 768px)"); // Check if screen width is greater than or equal to 768px
   const { colorMode, toggleColorMode } = useColorMode();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const listOfLinks = [
+    {
+      to: "/",
+      displayText: "Home",
+    },
+    {
+      to: "/men",
+      displayText: "Users",
+    },
+    {
+      to: "/women",
+      displayText: "Women",
+    },
+    {
+      to: "/kids",
+      displayText: "Kids",
+    },
+    {
+      to: "/cart",
+      displayText: "Cart",
+    },
+    {
+      to: "/wishlist",
+      displayText: "wishlist",
+    },
+  ];
+
+  const SocialButton = ({ children, label, href }: SocialButtonProps) => {
+    return (
+      <chakra.button
+        bg={useColorModeValue("blackAlpha.100", "white")}
+        rounded={"full"}
+        w={8}
+        h={8}
+        cursor={"pointer"}
+        as={"a"}
+        href={href}
+        display={"inline-flex"}
+        alignItems={"center"}
+        justifyContent={"center"}
+        transition={"background 0.3s ease"}
+        _hover={{
+          bg: useColorModeValue("blackAlpha.200", "whiteAlpha.200"),
+        }}
+      >
+        <VisuallyHidden>{label}</VisuallyHidden>
+        {children}
+      </chakra.button>
+    );
+  };
 
   return (
-    <>
-      <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
-        <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-          <Flex gap={20}>
+    <Box
+      bg={useColorModeValue("white", "black")}
+      px={4}
+      position={"sticky"}
+      top={0}
+      zIndex={1}
+    >
+      <Flex minWidth="max-content" alignItems="center" gap="8" h={28}>
+        {isNormalScreen ? (
+          <Button bg="whiteAlpha.200" onClick={onToggle}>
+            {isOpen ? <CloseIcon /> : <HamburgerIcon />}
+          </Button>
+        ) : (
+          <Button bg="white" onClick={onToggle}>
+            {isOpen ? <CloseIcon /> : <HamburgerIcon />}
+          </Button>
+        )}
+        <Spacer />
+        <Drawer placement={placement} onClose={onClose} isOpen={isOpen}>
+          <DrawerOverlay />
+          <DrawerContent>
+            <DrawerHeader borderBottomWidth="1px">
+              <Link to="/loginPage">
+                <Flex alignItems="center">
+                  Log in <CiUser />
+                </Flex>
+              </Link>
+            </DrawerHeader>
+            <DrawerBody>
+              <Stack spacing={5} fontSize={20} fontWeight={"semibold"}>
+                <p>New Arrivals</p>
+                {listOfLinks.map((link) => (
+                  <NavLink
+                    key={link.to}
+                    to={link.to}
+                    style={({ isActive }) =>
+                      isActive ? { color: "black" } : { color: "gray" }
+                    }
+                  >
+                    {link.displayText}
+                  </NavLink>
+                ))}
+              </Stack>
+
+              <Stack direction={"row"} spacing={6} marginTop={"200px"}>
+                <SocialButton label={"Twitter"} href={"#"}>
+                  <FaTwitter />
+                </SocialButton>
+                <SocialButton label={"YouTube"} href={"#"}>
+                  <FaYoutube />
+                </SocialButton>
+                <SocialButton label={"Instagram"} href={"#"}>
+                  <FaInstagram />
+                </SocialButton>
+              </Stack>
+              <Stack direction={"row"} spacing={6} marginTop={5}>
+                <SocialButton label={"Twitter"} href={"#"}>
+                  <FaGoogle />
+                </SocialButton>
+                <SocialButton label={"Instagram"} href={"#"}>
+                  <FaFacebook />
+                </SocialButton>
+              </Stack>
+            </DrawerBody>
+          </DrawerContent>
+        </Drawer>
+        <Flex marginLeft={{ base: "auto", md: "auto", lg: "200px" }}>
+          <Link to="/">
             {" "}
-            <Box>Logo</Box>
-            {links.map((ele) => (
-              <NavLink to={ele.link} key={ele.id}>
-                {ele.name}
-              </NavLink>
-            ))}
-          </Flex>
-
-          <Flex alignItems={"center"}>
-            <Stack direction={"row"} spacing={7}>
-              <Button as={"a"} href={"/loginPage"}>
-                Login
-              </Button>
-              <Button onClick={toggleColorMode}>
-                {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
-              </Button>
-
-              <Menu>
-                <MenuButton
-                  as={Button}
-                  rounded={"full"}
-                  variant={"link"}
-                  cursor={"pointer"}
-                  minW={0}
-                >
-                  <Avatar
-                    size={"sm"}
-                    src={"https://avatars.dicebear.com/api/male/username.svg"}
-                  />
-                </MenuButton>
-                <MenuList alignItems={"center"}>
-                  <br />
-                  <Center>
-                    <Avatar
-                      size={"2xl"}
-                      src={"https://avatars.dicebear.com/api/male/username.svg"}
-                    />
-                  </Center>
-                  <br />
-                  <Center>
-                    <p>Username</p>
-                  </Center>
-                  <br />
-                  <MenuDivider />
-                  <MenuItem>Your Servers</MenuItem>
-                  <MenuItem>Account Settings</MenuItem>
-                  <MenuItem>Logout</MenuItem>
-                </MenuList>
-              </Menu>
-            </Stack>
-          </Flex>
+            <Image
+              src={colorMode === "light" ? FusionLogo : DarkFusionLogo}
+              alt="Fusion Logo"
+              h={16}
+            />
+          </Link>
         </Flex>
-      </Box>
-    </>
+        <Spacer />
+        <Box
+          display={!isOpen && isNormalScreen ? "flex" : "none"} // Show menu items only when sidebar is closed and screen is normal
+          alignItems="center"
+          justifyContent="space-between"
+          gap={3}
+          w={{ base: "full", md: "auto" }}
+        >
+          <Link to="/LoginPage">
+            <Box fontSize="xx-large">
+              <CiUser />
+            </Box>
+          </Link>
+          <Link to="">
+            <Box fontSize="xx-large">
+              <CiSearch />
+            </Box>
+          </Link>
+          <Link to="/wishlist">
+            <Box fontSize="xx-large">
+              <CiHeart />
+            </Box>
+          </Link>
+          <Link to="/cart">
+            <Box fontSize="xx-large">
+              <CiShoppingCart />
+            </Box>
+          </Link>
+          <Button onClick={toggleColorMode}>
+            {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+          </Button>
+        </Box>
+        <Collapse in={isOpen} animateOpacity>
+          <Box
+            display={isNormalScreen ? "none" : "flex"} // Show menu items only for small screens when sidebar is open
+            alignItems="center"
+            justifyContent="space-between"
+            w={{ base: "full", md: "auto" }}
+            flexDirection="column"
+            transition="height 0.3s ease"
+            height={isOpen ? "auto" : "0"}
+            overflowY={isOpen ? "auto" : "hidden"}
+          >
+            <Link to="/">Home</Link>
+            <Link to="/about">About</Link>
+            <Link to="">Contact</Link>
+          </Box>
+        </Collapse>
+      </Flex>
+    </Box>
   );
 };
 

@@ -1,14 +1,13 @@
 
-import productReducer from "./adminDataReducer/reducer"
-import { configureStore } from "@reduxjs/toolkit";
+
 import menSlice from "./ProductsSlice/menSlice";
 import womenSlice from "./ProductsSlice/womenSlice";
-
-
-const store = configureStore({
-  reducer: {
-    // auth: AuthReducer,
-    // data:dataReducer,
+import { loginReducer } from "./Reducers/AuthReducer";
+import productReducer from "./adminDataReducer/reducer"
+import {configureStore} from "@reduxjs/toolkit";
+ const store = configureStore({
+  reducer:{
+     auth: loginReducer,
     menData: menSlice,
     womenData: womenSlice,
     Products: productReducer

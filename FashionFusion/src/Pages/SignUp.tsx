@@ -68,13 +68,15 @@ const Signup: React.FC = () => {
       height="100%"
       bg="silver"
       color="black"
-      borderTopLeftRadius={"60%"}
+      borderTopLeftRadius={"55%"}
       padding={10}
+      paddingX={20}
       onClick={handleToggleForm}
+ 
     >
       <FormControl>
         <Heading
-          margin="60px"
+          marginBottom="5px"
           cursor="pointer"
           transition="color 0.5s, font-size 0.5s"
           transform={isTransformed ? "scale(.7)" : ""}
@@ -114,7 +116,7 @@ const Signup: React.FC = () => {
           bg="black"
           _hover={{ color: "black", bg: "gray", fontSize: "larger", boxShadow: "8px 8px 8px rgb(33, 33, 33)"}}
           color="white"
-          marginTop={10}
+          marginTop={4}
         >
           SignUp
         </Button>
