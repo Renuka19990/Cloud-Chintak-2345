@@ -2,13 +2,13 @@
 
 
 import { loginReducer } from "./Reducers/AuthReducer";
-// import productReducer from "./adminDataReducer/reducer"
+import productReducer from "./adminDataReducer/reducer"
 import {configureStore} from "@reduxjs/toolkit";
  const store = configureStore({
   reducer:{
      auth: loginReducer,
     // data:dataReducer,
-    // Products: productReducer
+    Products: productReducer
   },
 });
 

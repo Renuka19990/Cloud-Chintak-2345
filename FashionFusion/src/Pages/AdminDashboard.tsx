@@ -1,17 +1,10 @@
 import {
   Box,
-  Center,
   Drawer,
   DrawerContent,
+  Flex,
   Grid,
   GridItem,
-  Spinner,
-  Stat,
-  StatArrow,
-  StatGroup,
-  StatHelpText,
-  StatLabel,
-  StatNumber,
   Text,
   useColorModeValue,
   useDisclosure,
@@ -28,8 +21,17 @@ import {
   getUserData,
   getWomenData,
 } from "../Redux/adminDataReducer/reducer";
+import { FiTruck, FiPackage } from "react-icons/fi";
+
+import {
+  FaChildDress,
+  FaUsers,
+  FaPerson,
+  FaPersonDress,
+} from "react-icons/fa6";
 
 interface AdminDashboardProps {}
+
 const AdminDashboard: React.FC<AdminDashboardProps> = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   //Fetch store
@@ -46,8 +48,6 @@ const AdminDashboard: React.FC<AdminDashboardProps> = () => {
     dispatch(getUserData(userUrl));
   }, []);
 
-  // let { isLoading, isError, mensProducts, womenProducts, kidsProducts, users } =
-  //   useSelector((store) => store.Products);
   const {
     isLoading,
     isError,
@@ -85,39 +85,11 @@ const AdminDashboard: React.FC<AdminDashboardProps> = () => {
 
       <Box ml={{ base: 0, md: 60 }} p="4">
         {/* Content */}
-    <center><Text fontSize="xl" fontWeight="bold">
-          Dashboard
-        </Text></center>
-        
-        <Grid
-          templateColumns={{
-            base: "repeat(1, 1fr)",
-            md: "repeat(2, 1fr)",
-          }}
-          gap={6}
-        >
-         
-
-          {/* <GridItem w="100%" h="10" bg="blue.500">
-            {!isLoading && !isError && (
-              <div>Women data length:{womenProducts.length}</div>
-            )}
-          </GridItem>
-          <GridItem w="100%" h="10" bg="blue.500">
-            {!isLoading && !isError && (
-              <div>Kid data length:{kidsProducts.length}</div>
-            )}
-          </GridItem>
-          <GridItem w="100%" h="10" bg="blue.500">
-            {!isLoading && !isError && (
-              <div>User data length:{users.length}</div>
-            )}
-          </GridItem>
-          <GridItem w="100%" h="10" bg="blue.500">
-            Hello World
-          </GridItem> */}
-        </Grid>
-        
+        <center>
+          <Text fontSize="4xl" fontWeight="bold">
+            Dashboard
+          </Text>
+        </center>
 
         <Grid
           templateColumns={{
@@ -129,81 +101,113 @@ const AdminDashboard: React.FC<AdminDashboardProps> = () => {
           m="16px 25px 16px 25px"
         >
           <GridItem colSpan={1}>
-            <Box
+            <Flex
               p={4}
               borderWidth="1px"
               borderRadius="md"
               bgColor={useColorModeValue("white", "black")}
             >
-              Total Women's Products
-              {/* Place your data here */}
-            </Box>
+              <Flex alignItems="center" justifyContent="center">
+                <FaUsers size="32px" />
+              </Flex>
+
+              <Box ml="24px" fontSize="lg" fontWeight="bold">
+                {!isLoading && !isError && <Text>{users.length}</Text>}
+                <Text
+                  mt="10px"
+                  color={useColorModeValue("gray.500", "white")}
+                >
+                  Total Users{" "}
+                </Text>
+              </Box>
+            </Flex>
           </GridItem>
           <GridItem colSpan={1}>
-            <Box
+            <Flex
               p={4}
               borderWidth="1px"
               borderRadius="md"
               bgColor={useColorModeValue("white", "black")}
             >
-              Total Users
-              {/* Place your data here */}
-            </Box>
+              <Flex alignItems="center" justifyContent="center">
+                <FaPerson size="32px" />
+              </Flex>
+
+              <Box ml="24px" fontSize="lg" fontWeight="bold">
+                {!isLoading && !isError && <Text>{mensProducts.length}</Text>}
+                <Text mt="10px" color={useColorModeValue("gray.500", "white")}>Total Men Products </Text>
+              </Box>
+            </Flex>
           </GridItem>
           <GridItem colSpan={1}>
-            <Box
+            <Flex
               p={4}
               borderWidth="1px"
               borderRadius="md"
               bgColor={useColorModeValue("white", "black")}
             >
-              Total Kids' Products
-              {/* Place your data here */}
-            </Box>
+              <Flex alignItems="center" justifyContent="center">
+                <FaPersonDress size="32px" />
+              </Flex>
+
+              <Box ml="24px" fontSize="lg" fontWeight="bold">
+                {!isLoading && !isError && <Text>{womenProducts.length}</Text>}
+                <Text mt="10px" color={useColorModeValue("gray.500", "white")}>Total Women Products </Text>
+              </Box>
+            </Flex>
           </GridItem>
           <GridItem colSpan={1}>
-            <Box p={4} borderWidth="1px" borderRadius="md"bgColor={useColorModeValue("white", "black")}>
-              Total Orders
-              {/* Place your data here */}
-            </Box>
+            <Flex
+              p={4}
+              borderWidth="1px"
+              borderRadius="md"
+              bgColor={useColorModeValue("white", "black")}
+            >
+              <Flex alignItems="center" justifyContent="center">
+                <FaChildDress size="32px" />
+              </Flex>
+
+              <Box ml="24px" fontSize="lg" fontWeight="bold">
+                {!isLoading && !isError && <Text>{kidsProducts.length}</Text>}
+                <Text mt="10px" color={useColorModeValue("gray.500", "white")}>Total Kids Products </Text>
+              </Box>
+            </Flex>
           </GridItem>
           <GridItem colSpan={1}>
-            <Box p={4} borderWidth="1px" borderRadius="md"bgColor={useColorModeValue("white", "black")}>
-              Product Sale
-              {/* Place your data here */}
-            </Box>
+            <Flex
+              p={4}
+              borderWidth="1px"
+              borderRadius="md"
+              bgColor={useColorModeValue("white", "black")}
+            >
+              <Flex alignItems="center" justifyContent="center">
+                <FiTruck size="32px" />
+              </Flex>
+
+              <Box ml="24px" fontSize="lg" fontWeight="bold">
+                {!isLoading && !isError && <Text>24,305</Text>}
+                <Text mt="10px" color={useColorModeValue("gray.500", "white")}>Total Orders </Text>
+              </Box>
+            </Flex>
           </GridItem>
           <GridItem colSpan={1}>
-            <Box p={4} borderWidth="1px" borderRadius="md"bgColor={useColorModeValue("white", "black")}>
-              Product Sale
-              {/* Place your data here */}
-            </Box>
+            <Flex
+              p={4}
+              borderWidth="1px"
+              borderRadius="md"
+              bgColor={useColorModeValue("white", "black")}
+            >
+              <Flex alignItems="center" justifyContent="center">
+                <FiPackage size="32px" />
+              </Flex>
+
+              <Box ml="24px" fontSize="lg" fontWeight="bold">
+                {!isLoading && !isError && <Text>87,056</Text>}
+                <Text mt="10px"color={useColorModeValue("gray.500", "white")}>Product Sell </Text>
+              </Box>
+            </Flex>
           </GridItem>
         </Grid>
-        <div>
-          {isLoading && <div>Loading...</div>}
-          {isError && <div>Error...</div>}
-          {/* {!isLoading &&
-          !isError &&
-          (users.length > 0 ? (
-            users.map((item) => {
-              return <Component key={item.id} item={item} />;
-            })
-           
-          ) : (
-            <div>No data to display</div>
-          ))} */}
-          {!isLoading && !isError && (
-            <div>Men data length:{mensProducts.length}</div>
-          )}
-          {!isLoading && !isError && (
-            <div>Women data length:{womenProducts.length}</div>
-          )}
-          {!isLoading && !isError && (
-            <div>Kid data length:{kidsProducts.length}</div>
-          )}
-          {!isLoading && !isError && <div>User data length:{users.length}</div>}
-        </div>
       </Box>
     </Box>
   );
