@@ -1,5 +1,5 @@
+import { useEffect, useState } from "react";
 import { Box, Button } from "@chakra-ui/react";
-import React, { useState } from "react";
 import Login from "./Login";
 import Signup from "./SignUp";
 
@@ -10,23 +10,34 @@ const LoginPage = () => {
     setShowLogin(!showLogin);
   };
 
+  useEffect(() => {
+    // Disable scrolling on mount
+    document.body.style.overflow = "hidden";
+    // Re-enable scrolling on unmount
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, []);
+
   return (
     <Box
       display="flex"
       justifyContent="center"
       alignItems="center"
       minHeight="100vh"
+      paddingY={8} // Adjust padding as needed
       textAlign="center"
       bgGradient="linear(gray.300, gray.500, black)"
     >
       <Box
-        width="550px"
-        height="660px"
+        width="530px"
+        height="500px"
         bg="black"
         borderRadius="40px"
         boxShadow="0 4px 6px rgba(0, 0, 0, 0.1)"
         position="relative"
         overflow="hidden"
+        zIndex={0}
       >
         <Box
           transition="transform 0.5s ease-in-out"
@@ -36,7 +47,7 @@ const LoginPage = () => {
           top="0"
           left="0"
           right="0"
-          zIndex="2"
+          zIndex="0"
         >
           <Login />
         </Box>

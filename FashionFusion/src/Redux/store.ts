@@ -1,20 +1,17 @@
 
-import { applyMiddleware, combineReducers, createStore, Store } from "redux";
-import {thunk} from "redux-thunk";
-import { AuthReducer } from "./Reducers/AuthReducer";
-import { dataReducer } from "./fetchMenDataReducer/dataReducer";
 
 
-
-interface RootState {
-  auth: ReturnType<typeof AuthReducer>;
-}
-
-const rootReducer = combineReducers<RootState>({
-  auth: AuthReducer,
-  data:dataReducer
+import { loginReducer } from "./Reducers/AuthReducer";
+// import productReducer from "./adminDataReducer/reducer"
+import {configureStore} from "@reduxjs/toolkit";
+ const store = configureStore({
+  reducer:{
+     auth: loginReducer,
+    // data:dataReducer,
+    // Products: productReducer
+  },
 });
 
-const store: Store<RootState> = createStore(rootReducer, applyMiddleware(thunk));
-
 export default store;
+export type RootState = ReturnType<typeof store.getState>; 
+export type AppDispatch = typeof store.dispatch;
