@@ -61,6 +61,7 @@ const initialState: State = {
   womenProducts: [],
   kidsProducts: [],
   users: [],
+  // orders:[]
 };
 
 // export const productReducer = (state: State = initState, { type, payload }: { type: string; payload: any }): State => {
@@ -177,6 +178,20 @@ const productReducer = createSlice({
         state.isLoading = true;
         state.isError = false;
       });
+    // builder
+    //   .addCase(getOrderData.fulfilled, (state, action: PayloadAction<any>) => {
+    //     state.isLoading = false;
+    //     state.isError = false;
+    //     state.users = action.payload;
+    //   })
+    //   .addCase(getOrderData.rejected, (state) => {
+    //     state.isLoading = false;
+    //     state.isError = true;
+    //   })
+    //   .addCase(getOrderData.pending, (state) => {
+    //     state.isLoading = true;
+    //     state.isError = false;
+    //   });
   },
 });
 
@@ -266,4 +281,13 @@ export const getUserData = createAsyncThunk(
     return data;
   }
 );
+
+// export const getOrderData = createAsyncThunk(
+//   "productReducer/getOrderData",
+//   async (url: string) => {
+//     const res = await fetch(url);
+//     const data = await res.json();
+//     return data;
+//   }
+// );
 export default productReducer.reducer;

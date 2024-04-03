@@ -12,8 +12,7 @@ interface NavItemProps extends FlexProps {
 export const NavItemAdmin = ({ icon, children, ...rest }: NavItemProps) => {
   return (
     <Box
-      // as="a"
-      // href="#"
+      
       style={{ textDecoration: "none" }}
       _focus={{ boxShadow: "none" }}
     >
@@ -25,7 +24,7 @@ export const NavItemAdmin = ({ icon, children, ...rest }: NavItemProps) => {
         role="group"
         cursor="pointer"
         _hover={{
-          //   bg: "cyan.400",
+         
           bg: "gray.300",
           color: "white",
         }}

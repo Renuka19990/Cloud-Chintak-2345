@@ -7,6 +7,7 @@ import Home from "../Pages/Home";
 import AdminUsers from "../Pages/AdminUsers";
 import AdminProducts from "../Pages/AdminProducts";
 import Settings from "../Pages/Settings";
+import AddProducts from "../Pages/AdminAddProduct";
 
 function AllRoutes() {
   return (
@@ -17,6 +18,7 @@ function AllRoutes() {
       <Route path="/adminUsers" element={<AdminUsers />} />
       <Route path="/adminProducts" element={<AdminProducts />} />
       <Route path="/settings" element={<Settings />} />
+      <Route path="/addProduct" element={< AddProducts/>} />
       <Route path="/*" element={<Error />} />
       <Route path="/products/:id" element={<SingleMen />} /> 
       {/* <Route path='/women' element={<Women/>} /> */}
