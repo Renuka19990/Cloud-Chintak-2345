@@ -64,11 +64,11 @@ Include screenshots as necessary.
 ![Start]()
 
 ## Application ScreenShots
-![landing](./public/LandingPage1.png)
-![landing](./public/LandingPage2.png)
-![login](./public/LoginPage.png)
-![men](./public/men.png)
-![women](./public/women.png)
+![landing](FashionFusion/public/LandingPage1.png)
+![landing](./src./public/LandingPage2.png)
+![login](./src./public/LoginPage.png)
+![men](./src./public/men.png)
+![women](,/src./public/women.png)
 ![SinglePage-men](./public/singlePage-men.png)
 ![SinglePage-women](./public/singlePage-women.png)
 ![admin](./public/admin1.png)
