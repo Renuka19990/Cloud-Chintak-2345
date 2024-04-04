@@ -111,6 +111,7 @@ const MyComponentF: React.FC = () => {
   return (
     <Box className='card-grid'>
       {items.map((item) => (
+         item.product && (
         <Box className='cardF' key={item.id} borderWidth="1px" borderRadius="lg" overflow="hidden">
           <Image src={item.product.imageURL} alt={item.product.name} className='card-img-topF' />
           <Box p="6">
@@ -122,7 +123,7 @@ const MyComponentF: React.FC = () => {
             <Button colorScheme="blue" onClick={() => handleAddToCart(item.product)}>Add To Cart</Button>
           </Box>
         </Box>
-      ))}
+      )))}
       {showSuccessMessage && (
         <Box className="success-message" mt="4" p="4" bg="green.100" borderWidth="1px" borderColor="green.400" borderRadius="md">
           Item added to cart successfully. 🎉

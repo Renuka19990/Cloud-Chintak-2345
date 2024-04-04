@@ -89,23 +89,25 @@ const MyComponentB: React.FC = () => {
   return (
     <div>
       {items.map((item) => (
-        <div className="cardB" key={item.id}>
-          <img src={item.product.imageURL} alt={item.product.name} className="card-img-topB" />
-          <div className="card-bodyB">
-            <h5 className="card-titleB">{item.product.name}</h5>
-            <p className="card-textB">{item.product.description}</p>
-            <p className="card-textB">Price: ${item.product.price}</p>
-            <p className="card-textB">Stock: {item.product.stock}</p>
-            <p className="card-textB">Rating: {item.product.rating}</p>
-            <button className="btn-primaryB" onClick={() => handleDeleteItem(item.id)}>DELETE</button>
+        item.product && (
+          <div className="cardB" key={item.id}>
+            <img src={item.product.imageURL} alt={item.product.name} className="card-img-topB" />
+            <div className="card-bodyB">
+              <h5 className="card-titleB">{item.product.name}</h5>
+              <p className="card-textB">{item.product.description}</p>
+              <p className="card-textB">Price: ${item.product.price}</p>
+              <p className="card-textB">Stock: {item.product.stock}</p>
+              <p className="card-textB">Rating: {item.product.rating}</p>
+              <button className="btn-primaryB" onClick={() => handleDeleteItem(item.id)}>DELETE</button>
+            </div>
           </div>
-        </div>
+        )
       ))}
     </div>
   );
+  
+  
+  
 };
 
 export default MyComponentB;
-
-
-
