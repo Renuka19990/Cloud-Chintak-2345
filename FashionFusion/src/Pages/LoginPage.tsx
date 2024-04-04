@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Box, Button } from "@chakra-ui/react";
 import Login from "./Login";
-import Signup from "./SignUp";
+import SignUp from "./SignUp";
 
 const LoginPage = () => {
   const [showLogin, setShowLogin] = useState(true);
@@ -11,9 +11,7 @@ const LoginPage = () => {
   };
 
   useEffect(() => {
-    // Disable scrolling on mount
     document.body.style.overflow = "hidden";
-    // Re-enable scrolling on unmount
     return () => {
       document.body.style.overflow = "unset";
     };
@@ -61,7 +59,7 @@ const LoginPage = () => {
           right="0"
           zIndex="1"
         >
-          <Signup />
+          <SignUp />
         </Box>
         <Button
           onClick={handleToggleForm}

@@ -1,8 +1,8 @@
 
-interface User {
-  email: string;
-  password: string;
-}
+// interface User {
+//   email: string;
+//   password: string;
+// }
 
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";

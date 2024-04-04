@@ -1,10 +1,9 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import {
   Box,
   Flex,
   Spacer,
-
   Collapse,
   useDisclosure,
   useMediaQuery,
@@ -12,7 +11,6 @@ import {
   useColorMode,
   Button,
   Image,
-
   Stack,
   Drawer,
   DrawerOverlay,
@@ -28,12 +26,18 @@ import DarkFusionLogo from "../assets/FashionFusionDarkLogo.png";
 import { CiUser, CiSearch, CiHeart, CiShoppingCart } from "react-icons/ci";
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa6";
-
+type DrawerPlacement = "top" | "right" | "bottom" | "left";
 const Navbar: React.FC = () => {
   const { isOpen, onToggle, onClose } = useDisclosure();
-  const [placement] = useState("left");
+  const [placement] = useState<DrawerPlacement>("left");
   const [isNormalScreen] = useMediaQuery("(min-width: 768px)"); // Check if screen width is greater than or equal to 768px
   const { colorMode, toggleColorMode } = useColorMode();
+
+  interface SocialButtonProps {
+    label: string;
+    href: string;
+    children: React.ReactNode;
+  }
 
   const listOfLinks = [
     {
@@ -42,7 +46,7 @@ const Navbar: React.FC = () => {
     },
     {
       to: "/men",
-      displayText: "Users",
+      displayText: "Men",
     },
     {
       to: "/women",
@@ -142,7 +146,7 @@ const Navbar: React.FC = () => {
                   <FaInstagram />
                 </SocialButton>
               </Stack>
-              <Stack direction={"row"} spacing={6} marginTop={5}>
+              <Stack direction={"row"} spacing={6} marginTop={5} bg={"gray"}>
                 <SocialButton label={"Twitter"} href={"#"}>
                   <FaGoogle />
                 </SocialButton>
