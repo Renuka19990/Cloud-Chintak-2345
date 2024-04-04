@@ -17,6 +17,7 @@ import Kid from "../Pages/Kid";
 import PrivateRoute from "./PrivateRoute";
 import MyComponentB from "../Components/Card";
 import MyComponentF from "../Components/Favorite";
+import SingleKid from "../Pages/SingleKid";
 
 function AllRoutes() {
   return (
@@ -33,6 +34,7 @@ function AllRoutes() {
       <Route path="/kids" element={<Kid/>} />
       <Route path="/men/:id" element={<SingleMen />} /> 
       <Route path="/women/:id" element={<SingleWomen />} /> 
+      <Route path="/kid/:id" element={<SingleKid />} /> 
       <Route path="/addProduct" element={< AddProducts/>} />
       <Route path="/*" element={<Error />} />
       <Route path='/cart' element={<MyComponentB/>} />
