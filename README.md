@@ -65,14 +65,14 @@ Include screenshots as necessary.
 
 ## Application ScreenShots
 ![landing](FashionFusion/public/LandingPage1.png)
-![landing](./src./public/LandingPage2.png)
-![login](./src./public/LoginPage.png)
-![men](./src./public/men.png)
-![women](,/src./public/women.png)
-![SinglePage-men](./public/singlePage-men.png)
-![SinglePage-women](./public/singlePage-women.png)
-![admin](./public/admin1.png)
-![admin](./public/admin2.png)
+![landing](FashionFusion/public/LandingPage2.png)
+![login](FashionFusion/public/LoginPage.png)
+![men](FashionFusion/public/men.png)
+![women](FashionFusion/public/women.png)
+![SinglePage-men](FashionFusion/public/singlePage-men.png)
+![SinglePage-women](FashionFusion/public/singlePage-women.png)
+![admin](FashionFusion/public/admin1.png)
+![admin](FashionFusion/public/admin2.png)
 
 ## API Endpoints
 
