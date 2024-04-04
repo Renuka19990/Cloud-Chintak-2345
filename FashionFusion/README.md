@@ -64,15 +64,15 @@ Include screenshots as necessary.
 ![Start]()
 
 ## Application ScreenShots
-![landing]()
-![login]()
-![signUp]()
-![men]()
-![women]()
-![cart]()
-![wishlist]()
-![admin]()
-
+![landing](./public/LandingPage1.png)
+![landing](./public/LandingPage2.png)
+![login](./public/LoginPage.png)
+![men](./public/men.png)
+![women](./public/women.png)
+![SinglePage-men](./public/singlePage-men.png)
+![SinglePage-women](./public/singlePage-women.png)
+![admin](./public/admin1.png)
+![admin](./public/admin2.png)
 
 ## API Endpoints
 
