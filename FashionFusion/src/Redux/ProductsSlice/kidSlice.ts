@@ -15,36 +15,36 @@ const initialState: DataState = {
 };
 
  
-export const fetchWomenData = createAsyncThunk<any, void>(
-    'womenData/fetchData',
+export const fetchKidData = createAsyncThunk<any, void>(
+    'kidData/fetchData',
     async () => {
-        const res = await axios.get('https://mock-server-app-1.onrender.com/womens');
+        const res = await axios.get('https://mock-server-app-1.onrender.com/kids');
         // console.log(res.data);
         return res.data;
         
     }
 );
 
-const womenSlice = createSlice({
-    name: 'womenData',
+const kidSlice = createSlice({
+    name: 'kidData',
     initialState,
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchWomenData.pending, (state) => {
+            .addCase(fetchKidData.pending, (state) => {
                 state.isLoading = true;
                 state.isError = null;
             })
-            .addCase(fetchWomenData.fulfilled, (state, action) => {
+            .addCase(fetchKidData.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.data = action.payload;
                 state.isError = null;
             })
-            .addCase(fetchWomenData.rejected, (state, action) => {
+            .addCase(fetchKidData.rejected, (state, action) => {
                 state.isLoading = false;
                 state.isError = action.error.message || "An error occurred";
             });
     },
 });
 
-export default womenSlice.reducer;
+export default kidSlice.reducer;
