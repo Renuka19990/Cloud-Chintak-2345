@@ -7,22 +7,14 @@ import {
   Heading,
   Input,
 } from "@chakra-ui/react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import {  loginData, loginSuccess } from "../Redux/action";
-
- // Import your async thunk action creator here
-
-interface RootState {
-  auth: {
-    isLoggedIn: boolean;
-  };
-}
+import { loginData, loginSuccess } from "../Redux/action";
+import { AppDispatch } from "../Redux/store";
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const { isLoggedIn } = useSelector((state: RootState) => state.auth);
+  const dispatch: AppDispatch = useDispatch();
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -32,20 +24,21 @@ const Login: React.FC = () => {
     e.preventDefault();
 
     if (form.email === "admin@admin.com" && form.password === "admin") {
-      const Admin = [
-        {
-          firstName: "Admin",
-          email: form.email,
-          password: form.password,
-        },
-      ];
+      const Admin = {
+        firstName: "Admin",
+        email: form.email,
+        password: form.password,
+      };
       dispatch(loginSuccess(Admin));
       navigate("/adminDashboard");
     } else {
       try {
         // Dispatch the async thunk action creator with the required properties
-        await dispatch(loginData({ email: form.email, password: form.password, navigate }));
+        await dispatch(
+          loginData({ email: form.email, password: form.password, navigate })
+        );
       } catch (error) {
+        console.error("Login failed:", error);
         alert(error);
       }
     }
@@ -92,7 +85,12 @@ const Login: React.FC = () => {
           onClick={handleLogin}
           marginTop={10}
           bg="black"
-          _hover={{ color: "black", bg: "gray", fontSize: "larger", boxShadow: "8px 8px 8px rgb(33, 33, 33)" }}
+          _hover={{
+            color: "black",
+            bg: "gray",
+            fontSize: "larger",
+            boxShadow: "8px 8px 8px rgb(33, 33, 33)",
+          }}
           color="white"
         >
           Login

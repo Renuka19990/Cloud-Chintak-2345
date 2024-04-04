@@ -13,7 +13,7 @@ interface RootState {
 const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
   const { isLoggedIn } = useSelector((state: RootState) => state.auth);
 
-  return isLoggedIn ? <>{children}</> : <Navigate to="/loginPage" />;
+  return !isLoggedIn ? <>{children}</> : <Navigate to="/loginPage" />;
 };
 
 export default PrivateRoute;

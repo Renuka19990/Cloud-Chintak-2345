@@ -14,6 +14,9 @@ import SingleWomen from "../Pages/SingleWomen";
 import Women from "../Pages/Women";
 import AddProducts from "../Pages/AdminAddProduct";
 import Kid from "../Pages/Kid";
+import PrivateRoute from "./PrivateRoute";
+import MyComponentB from "../Components/Card";
+import MyComponentF from "../Components/Favorite";
 
 function AllRoutes() {
   return (
@@ -21,7 +24,7 @@ function AllRoutes() {
       <Route path='/' element={<Home/>}/>
       <Route path="/loginPage" element={<LoginPage />} />
 
-      <Route path="/adminDashboard" element={<AdminDashboard />} />
+      <Route path="/adminDashboard" element={<PrivateRoute><AdminDashboard /></PrivateRoute>} />
       <Route path="/adminUsers" element={<AdminUsers />} />
       <Route path="/adminProducts" element={<AdminProducts />} />
       <Route path="/settings" element={<Settings />} />
@@ -32,12 +35,14 @@ function AllRoutes() {
       <Route path="/women/:id" element={<SingleWomen />} /> 
       <Route path="/addProduct" element={< AddProducts/>} />
       <Route path="/*" element={<Error />} />
+      <Route path='/cart' element={<MyComponentB/>} />
+       <Route path='/wishlist' element={<MyComponentF/>} />
       {/* <Route path='/women' element={<Women/>} /> */}
       {/* <Route path='/singleWomen/:id' element={<singleWomen/>} /> */}
       {/* <Route path='/singleMen/:id' element={<singleMen/>} /> */}
       {/* <Route path='/payment' element={<Payment/>} /> */}
-      {/* <Route path='/cart' element={<Cart/>} /> */}
-      {/* <Route path='/wishlist' element={<WishList/>} /> */}
+      
+     
     </Routes>
   );
 }
