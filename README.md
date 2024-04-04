@@ -11,12 +11,9 @@ Full Stack
 ## Deplolyed App
 
 Frontend: 
-
 Backend: https://mock-server-app-1.onrender.com/
 
-## Deployed Link:https://fashionfusion04.netlify.app/
- 
-## Video Walkthrough of the project:
+## Video Walkthrough of the project
 
 Project-Presentation Link:
 
@@ -67,15 +64,15 @@ Include screenshots as necessary.
 ![Start]()
 
 ## Application ScreenShots
-![landing]()
-![login]()
-![signUp]()
-![men]()
-![women]()
-![cart]()
-![wishlist]()
-![admin]()
-
+![landing](./public/LandingPage1.png)
+![landing](./public/LandingPage2.png)
+![login](./public/LoginPage.png)
+![men](./public/men.png)
+![women](./public/women.png)
+![SinglePage-men](./public/singlePage-men.png)
+![SinglePage-women](./public/singlePage-women.png)
+![admin](./public/admin1.png)
+![admin](./public/admin2.png)
 
 ## API Endpoints
 
@@ -114,6 +111,6 @@ List and provide a brief overview of the technologies used in the project.
 
 - Rnuka Jagrwal--fw29_183
 - Aman Chaubey -- ft30_113
-- Shubham  -- ft30_307
-- Balaji Deshmukh  -- fw28_220
-
+- Shubham Keshari  -- ft30_307
+- Balaji  -- fw28_220
+- Mayank  --
