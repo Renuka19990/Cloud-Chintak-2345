@@ -60,12 +60,12 @@ Vite
 ```
 
 Include screenshots as necessary.
-<img src='' alt=""/>
+<img src='FashionFusion/public/LandingPage1.png' alt=""/>
 ![Start]()
 
 ## Application ScreenShots
 ![landing](FashionFusion/public/LandingPage1.png)
-![landing](FashionFusion/public/LandingPage2.png)
+![landing](FashionFusion/public/LandingPage.png)
 ![login](FashionFusion/public/LoginPage.png)
 ![men](FashionFusion/public/men.png)
 ![women](FashionFusion/public/women.png)
