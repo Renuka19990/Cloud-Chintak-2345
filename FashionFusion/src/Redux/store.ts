@@ -1,5 +1,6 @@
 
 
+import kidSlice from "./ProductsSlice/kidSlice";
 import menSlice from "./ProductsSlice/menSlice";
 import womenSlice from "./ProductsSlice/womenSlice";
 import { loginReducer } from "./Reducers/AuthReducer";
@@ -10,6 +11,7 @@ import {configureStore} from "@reduxjs/toolkit";
      auth: loginReducer,
     menData: menSlice,
     womenData: womenSlice,
+    kiddata : kidSlice,
     Products: productReducer
   },
 });

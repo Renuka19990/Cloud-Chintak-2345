@@ -13,6 +13,7 @@ import Men from "../Pages/Men";
 import SingleWomen from "../Pages/SingleWomen";
 import Women from "../Pages/Women";
 import AddProducts from "../Pages/AdminAddProduct";
+import Kid from "../Pages/Kid";
 
 function AllRoutes() {
   return (
@@ -26,6 +27,7 @@ function AllRoutes() {
       <Route path="/settings" element={<Settings />} />
       <Route path="/men" element={<Men/>} />
       <Route path="/women" element={<Women/>} />
+      <Route path="/kids" element={<Kid/>} />
       <Route path="/men/:id" element={<SingleMen />} /> 
       <Route path="/women/:id" element={<SingleWomen />} /> 
       <Route path="/addProduct" element={< AddProducts/>} />

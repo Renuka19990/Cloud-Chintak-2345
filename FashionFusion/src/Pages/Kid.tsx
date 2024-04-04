@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchMenData } from '../Redux/ProductsSlice/menSlice';
-import ProductsGrid from './MenGrid';
 import {ThunkDispatch} from "@reduxjs/toolkit";
-
 import {
   Box,
   Grid,
@@ -15,21 +12,26 @@ import {
 import FilterSection from '../Components/FilterSection';
 import { RootState } from '../Redux/store';
 import useDebounce from '../hooks/useDebounce';
-const Men: React.FC = () => {
+import { fetchKidData } from '../Redux/ProductsSlice/kidSlice';
+import KidGrid from './KidGrid';
 
+const Kid: React.FC = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
   const { isLoading, data, isError } = useSelector(
-    (state: RootState) => state.menData
+    (state: RootState) => state.kiddata
   );
+
+  
   const [sortBy, setSortBy] = useState<string>('');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const debouncedSearchQuery = useDebounce(searchQuery, 500); 
-
+  
+//   console.log(data);
   useEffect(() => {
-    dispatch(fetchMenData());
-  }, [dispatch]);
-
+      dispatch(fetchKidData());
+    }, [dispatch]);
+    
   // Function to sort and filter data based on selected option and search query
   const getSortedAndFilteredData = (option: string, query: string) => {
     let sortedAndFilteredData = [...data];
@@ -140,7 +142,7 @@ const Men: React.FC = () => {
               size="sm"
               width={{ base: '40%', md: '20%' }}
               focusBorderColor="grey"
-              value={sortBy}
+              value={sortBy} 
               onChange={handleSortChange}
             >
               <option value="">Curated For You</option>
@@ -150,7 +152,7 @@ const Men: React.FC = () => {
             </Select>
           </Box>
           <Box p={{ base: '2', md: '4' }}>
-            <ProductsGrid products={sortedAndFilteredData} />
+            <KidGrid products={sortedAndFilteredData} />
           </Box>
         </Grid>
       </Box>
@@ -158,4 +160,4 @@ const Men: React.FC = () => {
   );
 };
 
-export default Men;
+export default Kid;

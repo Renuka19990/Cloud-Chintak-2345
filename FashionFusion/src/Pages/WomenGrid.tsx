@@ -1,6 +1,6 @@
 import React from 'react';
 import { SimpleGrid } from '@chakra-ui/react';
-import ProductCard from './ProductCard';
+import WomenCard from './WomenCard';
 
 interface Product {
   id: number;
@@ -16,14 +16,14 @@ interface Props {
   products: Product[];
 }
 
-const ProductsGrid: React.FC<Props> = ({ products }) => {
+const WomenGrid: React.FC<Props> = ({ products }) => {
   return (
     <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing="30px">
       {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
+        <WomenCard key={product.id} product={product} />
       ))}
     </SimpleGrid>
   );
 };
 
-export default ProductsGrid;
+export default WomenGrid;

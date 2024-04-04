@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchWomenData } from '../Redux/ProductsSlice/womenSlice';
-import ProductsGrid from './ProductsGrid';
+import {ThunkDispatch} from "@reduxjs/toolkit";
 import {
   Box,
   Grid,
@@ -13,9 +13,11 @@ import {
 import FilterSection from '../Components/FilterSection';
 import { RootState } from '../Redux/store';
 import useDebounce from '../hooks/useDebounce';
+import WomenGrid from './WomenGrid';
 
 const Women: React.FC = () => {
-  const dispatch = useDispatch();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
   const { isLoading, data, isError } = useSelector(
     (state: RootState) => state.womenData
   );
@@ -150,7 +152,7 @@ const Women: React.FC = () => {
             </Select>
           </Box>
           <Box p={{ base: '2', md: '4' }}>
-            <ProductsGrid products={sortedAndFilteredData} />
+            <WomenGrid products={sortedAndFilteredData} />
           </Box>
         </Grid>
       </Box>

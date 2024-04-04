@@ -16,7 +16,7 @@ const SingleWomen = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`https://mock-server-app-1.onrender.com/women/${id}`);
+        const response = await axios.get(`https://mock-server-app-1.onrender.com/womens/${id}`);
         setProduct(response.data);
       } catch (error) {
         console.error('Error fetching product:', error);
@@ -220,6 +220,7 @@ const SingleWomen = () => {
           YOU MAY ALSO LIKE ❤️
         </Highlight>
       </Heading>
+      
     </Box>
   );
 };
