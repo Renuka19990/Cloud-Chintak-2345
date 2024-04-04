@@ -114,7 +114,7 @@ const Navbar: React.FC = () => {
           <DrawerContent>
             <DrawerHeader borderBottomWidth="1px">
               <Link to="/loginPage">
-                <Flex alignItems="center">
+                <Flex alignItems="center" gap={3}>
                   Log in <CiUser />
                 </Flex>
               </Link>
@@ -146,7 +146,7 @@ const Navbar: React.FC = () => {
                   <FaInstagram />
                 </SocialButton>
               </Stack>
-              <Stack direction={"row"} spacing={6} marginTop={5} bg={"gray"}>
+              <Stack direction={"row"} spacing={6} marginTop={5} >
                 <SocialButton label={"Twitter"} href={"#"}>
                   <FaGoogle />
                 </SocialButton>

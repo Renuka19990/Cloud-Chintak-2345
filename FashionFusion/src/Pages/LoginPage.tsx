@@ -26,6 +26,7 @@ const LoginPage = () => {
       paddingY={8} // Adjust padding as needed
       textAlign="center"
       bgGradient="linear(gray.300, gray.500, black)"
+     
     >
       <Box
         width="530px"
@@ -36,6 +37,7 @@ const LoginPage = () => {
         position="relative"
         overflow="hidden"
         zIndex={0}
+        // marginTop={20}
       >
         <Box
           transition="transform 0.5s ease-in-out"
