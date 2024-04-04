@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "../util/cn";
+import './styles.css' // Import the CSS file
 
 export const InfiniteMovingCards = ({
   images,
-  direction = "left",
   speed = 90,
   className,
 }: {
@@ -35,14 +35,14 @@ export const InfiniteMovingCards = ({
   return (
     <div
       ref={containerRef}
-      className={cn("scroller relative z-20 max-w-full overflow-hidden z-0", className)}
+      className={cn("card-container relative max-w-full overflow-hidden z-0", className)}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <ul className={cn("flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap")}>
+      <ul className={cn("card-list flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap")}>
         {images.map((imageUrl, idx) => (
           <li
-            className="w-[350px] max-w-full relative rounded-2 flex-shrink-0 py-6 md:w-[450px]"
+            className="card w-[350px] max-w-full relative rounded-2 flex-shrink-0 py-6 md:w-[450px]"
             key={idx}
           >
             <blockquote>
@@ -56,11 +56,7 @@ export const InfiniteMovingCards = ({
                   <img
                     src={imageUrl}
                     alt={`Image ${idx}`}
-                    style={{   borderRadius: "10%",
-                    maxWidth: '80%',
-                    maxHeight: '80%',
-                    objectFit: 'cover',
-                    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)' }}
+                    className="card-image"
                   />
                 </span>
               </div>

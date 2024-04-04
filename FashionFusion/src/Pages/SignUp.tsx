@@ -8,7 +8,6 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useState, ChangeEvent, FormEvent } from "react";
-import { useNavigate } from "react-router-dom";
 
 interface FormData {
   firstName: string;
@@ -19,15 +18,14 @@ interface FormData {
 
 async function postUsers(url: string, cred: FormData) {
   try {
-    let res = await axios.post(url, cred);
+    const res = await axios.post(url, cred);
     console.log(res.data);
   } catch (error) {
     console.log(error);
   }
 }
 
-const Signup: React.FC = () => {
-  const navigate=useNavigate();
+const SignUp: React.FC = () => {
   const [form, setForm] = useState<FormData>({
     firstName: "",
     lastName: "",
@@ -42,17 +40,17 @@ const Signup: React.FC = () => {
     setForm({ ...form, [key]: e.target.value });
   };
 
-  const handleSignup = (e: FormEvent<HTMLButtonElement>) => {
+  const handleSignUp = (e: FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     postUsers("https://mock-server-app-1.onrender.com/users", form);
     console.log(form);
-    alert("Registerd successfully!");
+    alert("Registered successfully!");
     setForm({
       firstName: "",
       lastName: "",
       email: "",
       password: "",
-    })
+    });
     // navigate("/loginPage");
   };
   const [isTransformed, setIsTransformed] = useState<boolean>(false);
@@ -72,7 +70,6 @@ const Signup: React.FC = () => {
       padding={10}
       paddingX={20}
       onClick={handleToggleForm}
- 
     >
       <FormControl>
         <Heading
@@ -83,26 +80,34 @@ const Signup: React.FC = () => {
         >
           SignUp
         </Heading>
-        <FormLabel  transform={isTransformed ? "scale(.7)" : ""}>First name</FormLabel>
+        <FormLabel transform={isTransformed ? "scale(.7)" : ""}>
+          First name
+        </FormLabel>
         <Input
           placeholder="First name"
           value={form.firstName}
           onChange={(e) => handleInputChange(e, "firstName")}
         />
-        <FormLabel  transform={isTransformed ? "scale(.7)" : ""}>Last name</FormLabel>
+        <FormLabel transform={isTransformed ? "scale(.7)" : ""}>
+          Last name
+        </FormLabel>
         <Input
           placeholder="Last name"
           value={form.lastName}
           onChange={(e) => handleInputChange(e, "lastName")}
         />
-        <FormLabel  transform={isTransformed ? "scale(.7)" : ""}>Email</FormLabel>
+        <FormLabel transform={isTransformed ? "scale(.7)" : ""}>
+          Email
+        </FormLabel>
         <Input
           type="email"
           placeholder="Email"
           value={form.email}
           onChange={(e) => handleInputChange(e, "email")}
         />
-        <FormLabel  transform={isTransformed ? "scale(.7)" : ""}>Password</FormLabel>
+        <FormLabel transform={isTransformed ? "scale(.7)" : ""}>
+          Password
+        </FormLabel>
         <Input
           type="password"
           placeholder="Password"
@@ -112,9 +117,14 @@ const Signup: React.FC = () => {
         <Button
           transition=".2s ease-in"
           cursor="pointer"
-          onClick={handleSignup}
+          onClick={handleSignUp}
           bg="black"
-          _hover={{ color: "black", bg: "gray", fontSize: "larger", boxShadow: "8px 8px 8px rgb(33, 33, 33)"}}
+          _hover={{
+            color: "black",
+            bg: "gray",
+            fontSize: "larger",
+            boxShadow: "8px 8px 8px rgb(33, 33, 33)",
+          }}
           color="white"
           marginTop={4}
         >
@@ -125,4 +135,4 @@ const Signup: React.FC = () => {
   );
 };
 
-export default Signup;
+export default SignUp;
