@@ -18,7 +18,7 @@ interface Props {
 
 const KidGrid: React.FC<Props> = ({ products }) => {
   return (
-    <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing="30px">
+    <SimpleGrid columns={{ sm: 1, md: 2, lg: 4 }} spacing="30px">
       {products.map((product) => (
         <KidCard key={product.id} product={product} />
       ))}
