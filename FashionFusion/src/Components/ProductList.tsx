@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Box, Flex, Image, Text, Button, Input, Stack, Heading } from '@chakra-ui/react';
+import { Box, Flex, Image, Text, Button, Input, Stack, Heading, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 
 interface Product {
   id: number;
@@ -24,6 +25,7 @@ const ProductList = () => {
   const [promoCode, setPromoCode] = useState('');
   const [estimatedTotal, setEstimatedTotal] = useState(0);
   const [totalSavings, setTotalSavings] = useState(0);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -69,6 +71,11 @@ const ProductList = () => {
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     setPromoCode(e.target.value);
+  };
+
+  const placeOrder = () => {
+    // Here you can implement your logic to place the order, e.g., send a request to the server.
+    onOpen();
   };
 
   return (
@@ -141,7 +148,27 @@ const ProductList = () => {
             Apply
           </Button>
         </Flex>
+        <Flex mt={4} justifyContent="space-between">
+          <Button bg={'black'} color={'white'} onClick={placeOrder}>Place Order</Button>
+        </Flex>
       </Box>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Order Placed Successfully!</ModalHeader>
+          <ModalBody>
+            <Text>Congratulations! Order has been Placed Successfully. 🥳</Text>
+          </ModalBody>
+          <ModalFooter>
+            <Link to={'/wishlist'}>
+            <Button  bg={'black'} color={'white'} mr={3} onClick={onClose} >
+              Go back to Wishlist? ❤️
+            </Button>
+            </Link>
+            <Button bg={'black'} color={'white'} onClick={() => window.location.href = '/' }>Continue Shopping</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Box>
   );
 };
