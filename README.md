@@ -12,11 +12,41 @@ Full Stack
 
 Frontend:https://mock-server-app-1.onrender.com/
 Backend: https://mock-server-app-1.onrender.com/
+DataBase: https://mock-server-app-1.onrender.com/
 
 ## Video Walkthrough of the project
 
 Project-Presentation Link:https://youtu.be/PXXACu878Fs
 
+## Directory Structure
+## Directory Structure
+FashionFusion/
+├─ bac
+├─ frontend/
+│  ├─ src/
+│  |  ├─ components/
+│  |  | ├─ Admin.tsx
+│  |  | ├─ Cart.tsx
+│  |  | ├─ Favorite.tsx
+│  |  | ├─ Navbar.tsx
+│  |  | ├─ Sidebar.tsx
+│  |  | ├─ Productlist.tsx
+│  |  ├─ hooks/
+│  |  | ├─ Debounce.ts
+│  |  ├─ Pages/
+│  |  | ├─ Home.tsx
+│  |  | ├─ Men.tsx
+│  |  | ├─ Women.tsx
+│  |  | ├─ Kid.tsx
+│  |  ├─ Redux/
+│  |  | ├─ ActionTypes.ts
+│  |  | ├─ action.ts
+│  |  | ├─ reducers.ts
+│  |  | ├─ Store.ts
+│  |  ├─ Routes/
+│  |  | ├─ AllRoutes.tsx
+│  |  | ├─ PrivateRoute.tsx
+│  ├─ app.tsx
 ## Features
   Intuitive User Interface: A clean and user-friendly interface to enhance the browsing and shopping experience.
    
@@ -109,7 +139,7 @@ List and provide a brief overview of the technologies used in the project.
 
 ## Contributors
 
-- Rnuka Jagrwal--fw29_183
+- Rnuka Jagrwal--fw29_183 
 - Aman Chaubey -- ft30_113
 - Shubham Keshari  -- ft30_307
 - Balaji  -- fw28_220
