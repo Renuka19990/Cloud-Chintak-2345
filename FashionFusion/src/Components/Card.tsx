@@ -1,14 +1,17 @@
-import './Card.css';
+import "./Card.css";
 import React, { useEffect, useState } from "react";
-import { CircularProgress } from '@chakra-ui/react'
 import {
+  CircularProgress,
   Box,
   Heading,
   Container,
   Text,
   Stack,
-  
-} from '@chakra-ui/react';
+  useColorModeValue,
+  Flex,
+  Button,
+} from "@chakra-ui/react";
+
 
 interface Product {
   name: string;
@@ -24,20 +27,20 @@ interface Item {
   product: Product;
 }
 
-const fetchData = async () => {
-  const response = await fetch("https://mock-server-app-1.onrender.com/cart");
-  if (!response.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  const data = await response.json();
-  return data;
-};
-
 const MyComponentB: React.FC = () => {
   const [items, setItems] = useState<Item[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+  const bgColor = useColorModeValue("white", "gray.800");
+  const fetchData = async () => {
+    const response = await fetch("https://mock-server-app-1.onrender.com/cart");
+    if (!response.ok) {
+      throw new Error("Failed to fetch data");
+    }
+    const data = await response.json();
+    return data;
+  };
   useEffect(() => {
     fetchData()
       .then((data: Item[]) => {
@@ -55,7 +58,11 @@ const MyComponentB: React.FC = () => {
   };
 
   if (isLoading) {
-    return <div><CircularProgress isIndeterminate color='green.300'/></div>;
+    return (
+      <div>
+        <CircularProgress isIndeterminate color="green.300" />
+      </div>
+    );
   }
 
   if (error) {
@@ -65,19 +72,21 @@ const MyComponentB: React.FC = () => {
   if (items.length === 0) {
     return (
       <div>
-        <Container maxW={'3xl'}>
+        <Container maxW={"3xl"}>
           <Stack
             as={Box}
-            textAlign={'center'}
+            textAlign={"center"}
             spacing={{ base: 8, md: 14 }}
-            py={{ base: 20, md: 36 }}>
+            py={{ base: 20, md: 36 }}
+          >
             <Heading
               fontWeight={600}
-              fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
-              lineHeight={'110%'}>
+              fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
+              lineHeight={"110%"}
+            >
               Cart Is Empty <br />
-              <Text as={'span'} color={'green.400'}>
-                😊😊
+              <Text as={"span"} color={"green.400"}>
+                😓😓
               </Text>
             </Heading>
           </Stack>
@@ -86,28 +95,71 @@ const MyComponentB: React.FC = () => {
     );
   }
 
-  return (
-    <div>
-      {items.map((item) => (
+  return (<>
+  
+  <Container maxW="container.xxxl">
+  <Flex gap={4} flexWrap="wrap">
+    {items.map(
+      (item) =>
         item.product && (
-          <div className="cardB" key={item.id}>
-            <img src={item.product.imageURL} alt={item.product.name} className="card-img-topB" />
-            <div className="card-bodyB">
-              <h5 className="card-titleB">{item.product.name}</h5>
-              <p className="card-textB">{item.product.description}</p>
-              <p className="card-textB">Price: ${item.product.price}</p>
-              <p className="card-textB">Stock: {item.product.stock}</p>
-              <p className="card-textB">Rating: {item.product.rating}</p>
-              <button className="btn-primaryB" onClick={() => handleDeleteItem(item.id)}>DELETE</button>
-            </div>
-          </div>
+          <Box
+            key={item.id}
+            p={6}
+            w={["100%", "48%", "32%"]}
+            bg={bgColor}
+            boxShadow={"2xl"}
+            rounded={"lg"}
+            mb={8}
+          >
+            <Flex>
+              <Box mr={4}>
+                <img
+                  style={{ borderRadius: "8px" }}
+                  height={230}
+                  width={282}
+                  src={item.product.imageURL}
+                  alt={item.product.name}
+                />
+              </Box>
+              <Stack pt={10} align={"start"}>
+                <Text
+                  color={"gray.500"}
+                  fontSize={"sm"}
+                  textTransform={"uppercase"}
+                >
+                  Brand
+                </Text>
+                <Heading
+                  fontSize={"2xl"}
+                  fontFamily={"body"}
+                  fontWeight={500}
+                >
+                  {item.product.name}
+                </Heading>
+                <Text fontWeight={800} fontSize={"xl"}>
+                  ${item.product.price}
+                </Text>
+                <Text textDecoration={"line-through"} color={"gray.600"}>
+                  ${item.product.price}
+                </Text>
+                <Text fontSize={"sm"}>{item.product.description}</Text>
+                <Text fontSize={"sm"}>Stock: {item.product.stock}</Text>
+                <Text fontSize={"sm"}>Rating: {item.product.rating}</Text>
+                <Button
+                  colorScheme="red"
+                  onClick={() => handleDeleteItem(item.id)}
+                >
+                  Delete From Cart
+                </Button>
+              </Stack>
+            </Flex>
+          </Box>
         )
-      ))}
-    </div>
+    )}
+  </Flex>
+</Container></>
+    
   );
-  
-  
-  
 };
 
 export default MyComponentB;
