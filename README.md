@@ -10,12 +10,12 @@ Full Stack
 
 ## Deplolyed App
 
-Frontend: 
+Frontend:https://mock-server-app-1.onrender.com/
 Backend: https://mock-server-app-1.onrender.com/
 
 ## Video Walkthrough of the project
 
-Project-Presentation Link:
+Project-Presentation Link:https://youtu.be/PXXACu878Fs
 
 ## Features
   Intuitive User Interface: A clean and user-friendly interface to enhance the browsing and shopping experience.
@@ -113,4 +113,4 @@ List and provide a brief overview of the technologies used in the project.
 - Aman Chaubey -- ft30_113
 - Shubham Keshari  -- ft30_307
 - Balaji  -- fw28_220
-- Mayank  --
+- Mayank  --fw29_180
