@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Box, Button } from "@chakra-ui/react";
+import { Box, Button, Center } from "@chakra-ui/react";
 import Login from "./Login";
 import SignUp from "./SignUp";
 
@@ -27,7 +27,7 @@ const LoginPage = () => {
       textAlign="center"
       bgGradient="linear(gray.300, gray.500, black)"
      
-    >
+    ><Center>
       <Box
         width="530px"
         height="500px"
@@ -76,7 +76,7 @@ const LoginPage = () => {
         >
           {showLogin ? "Create a new Account" : "Already have an Account"}
         </Button>
-      </Box>
+      </Box></Center>
     </Box>
   );
 };

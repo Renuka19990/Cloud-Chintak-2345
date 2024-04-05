@@ -38,8 +38,8 @@ function AllRoutes() {
       <Route path="/kid/:id" element={<SingleKid />} /> 
       <Route path="/addProduct" element={< AddProducts/>} />
       <Route path="/*" element={<Error />} />
-      <Route path='/cart' element={<MyComponentB/>} />
-       <Route path='/wishlist' element={<MyComponentF/>} />
+      <Route path='/cart' element={<PrivateRoute><MyComponentB/></PrivateRoute>} />
+       <Route path='/wishlist' element={<PrivateRoute><MyComponentF/></PrivateRoute>} />
        <Route path='/productlist' element={<ProductList/>} />
       {/* <Route path='/women' element={<Women/>} /> */}
       {/* <Route path='/singleWomen/:id' element={<singleWomen/>} /> */}

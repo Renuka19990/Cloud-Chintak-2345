@@ -11,6 +11,7 @@ import {
   Flex,
   Button,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 
 interface Product {
@@ -98,6 +99,8 @@ const MyComponentB: React.FC = () => {
   return (<>
   
   <Container maxW="container.xxxl">
+    <Flex width={"100%"} justifyContent={"flex-end"}  alignItems={"flex-end"}><Link to="/productlist"><Button >Proceed to Buy</Button></Link></Flex>
+
   <Flex gap={4} flexWrap="wrap">
     {items.map(
       (item) =>

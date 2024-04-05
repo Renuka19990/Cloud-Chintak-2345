@@ -512,7 +512,7 @@ const Home: React.FC = () => {
 
   return (
     <Stack spacing={20}>
-      <Heading textAlign={"center"}>Men</Heading>
+      {/* <Heading textAlign={"center"}>Men</Heading> */}
       <Box
         position={"relative"}
         width={"full"}
@@ -1145,7 +1145,7 @@ const Home: React.FC = () => {
       </Flex>
       <Heading textAlign={"center"}>NEW ARRIVALS 👗 </Heading>
       <InfiniteMovingCards images={imageUrls} />
-      <Heading textAlign={"center"}> Kids</Heading>
+      <Heading textAlign={"center"}> Kids 👶</Heading>
       <Box
         position={"relative"}
         width={"full"}
@@ -1340,7 +1340,7 @@ const Home: React.FC = () => {
       <Box>
         <hr />
         {/* <InfinityMovingCard/> */}
-        <Footer />
+        <Footer/>
       </Box>
     </Stack>
   );

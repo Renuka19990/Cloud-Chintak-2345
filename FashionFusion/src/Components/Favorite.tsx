@@ -1,6 +1,6 @@
 import './Favorite.css';
 import React, { useEffect, useState } from 'react';
-import { CircularProgress, Center, Flex, useColorModeValue, Button, useToast, Stack, Image, Heading, Text, Badge, Container, Box, Grid } from '@chakra-ui/react';
+import { CircularProgress, Flex, useColorModeValue, Button, useToast, Stack, Heading, Text, Container, Box } from '@chakra-ui/react';
 import axios from 'axios';
 
 interface Product {
@@ -48,8 +48,10 @@ const MyComponentF: React.FC = () => {
   const bgColor = useColorModeValue('white', 'gray.800');
   const handleDeleteItem = (itemId: number) => {
     setItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
+   
   };
   const handleAddToCart = async (product: Product) => {
+
     try {
       await axios.post('https://mock-server-app-1.onrender.com/cart', {
         product,
@@ -125,14 +127,14 @@ const MyComponentF: React.FC = () => {
                     ${item.product.price}
                   </Text>
                   <Text textDecoration={'line-through'} color={'gray.600'}>
-                    ${item.product.price}
+                    ${item.product.price+2}
                   </Text>
                   <Text fontSize={'sm'}>{item.product.description}</Text>
                   <Text fontSize={'sm'}>Stock: {item.product.stock}</Text>
                   <Text fontSize={'sm'}>Rating: {item.product.rating}</Text>
                   <Flex gap={2}>  <Button colorScheme="red"  onClick={() => handleDeleteItem(item.id)}
                     >Remove</Button>
-                  <Button colorScheme="teal" onClick={() => handleAddToCart(item.product)}>Add To Cart</Button></Flex>
+                  <Button colorScheme="gray" onClick={() => handleAddToCart(item.product)}>Move To Cart</Button></Flex>
                 
                 </Stack>
               </Flex>
