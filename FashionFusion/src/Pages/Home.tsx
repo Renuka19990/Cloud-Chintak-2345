@@ -46,19 +46,23 @@ const settings2: Settings = {
   slidesToShow: 1,
   slidesToScroll: 1,
 };
+const settings3: Settings = {
+  dots: true,
+  arrows: false,
+  fade: true,
+  infinite: true,
+  autoplay: true,
+  speed: 500,
+  autoplaySpeed: 5000,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+};
 const Home: React.FC = () => {
   const [slider1, setSlider1] = useState<Slider | null>(null);
   const [slider2, setSlider2] = useState<Slider | null>(null);
-
-  // const top = useBreakpointValue({ base: "90%", md: "50%" });
+  const [slider3, setSlider3] = useState<Slider | null>(null);
   const side = useBreakpointValue({ base: "30%", md: "40px" });
-  // const imageStyle = {
-  //   width: { base: "100%", md: "100%", lg: "100%" },
-  //   height: "100%",
-  //   objectFit: "cover",
-  //   transition: "transform 0.3s ease-in-out",
-  //   // transform: `translateY(${top}) translateX(${side})`,
-  // };
+
   interface ImageStyle {
     borderRadius: number;
     width: string;
@@ -66,13 +70,11 @@ const Home: React.FC = () => {
     objectFit: "fill" | "contain" | "cover" | "none" | "scale-down";
     transition: string;
   }
-
-  // Apply the type to the imageStyle object
   const imageStyle: ImageStyle = {
     borderRadius: 20,
     width: "100%",
-    height: "auto", // or specify a fixed height
-    objectFit: "cover", // Ensure objectFit property is one of the defined types
+    height: "auto",
+    objectFit: "cover",
     transition: "all 0.3s ease",
   };
   const [hovered1, setHovered1] = useState(false);
@@ -140,6 +142,28 @@ const Home: React.FC = () => {
     "https://assets.ajio.com/medias/sys_master/root/20230523/8ZAp/646cc27f42f9e729d7a5a1d6/-473Wx593H-466181218-black-MODEL.jpg";
   const imageWomen8 =
     "https://assets.ajio.com/medias/sys_master/root/20230523/ELS7/646cc27f42f9e729d7a5a158/-473Wx593H-466181218-black-MODEL5.jpg";
+
+  const [hoveredW, setHoveredw] = useState(false);
+  const [hoveredX, setHoveredX] = useState(false);
+  const [hoveredY, setHoveredY] = useState(false);
+  const [hoveredZ, setHoveredZ] = useState(false);
+
+  const imageKid1 =
+    "https://www.onefridayworld.com/cdn/shop/files/4Z8A4404_720x.jpg?v=1711967015";
+  const imageKid2 =
+    "https://www.onefridayworld.com/cdn/shop/files/4Z8A4377_576x.jpg?v=1711967016";
+  const imageKid3 =
+    "https://www.onefridayworld.com/cdn/shop/files/2R9A7616_1100x.jpg?v=1711966981";
+  const imageKid4 =
+    "https://www.onefridayworld.com/cdn/shop/files/2R9A7610_1100x.jpg?v=1711966981";
+  const imageKid5 =
+    "https://www.onefridayworld.com/cdn/shop/files/IMG_9115_576x.jpg?v=1710842041";
+  const imageKid6 =
+    "https://www.onefridayworld.com/cdn/shop/files/IMG_9120_1100x.jpg?v=1710842041";
+  const imageKid7 =
+    "https://www.onefridayworld.com/cdn/shop/files/4Z8A4950_1100x.jpg?v=1708523712";
+  const imageKid8 =
+    "https://www.onefridayworld.com/cdn/shop/files/4Z8A4957_1100x.jpg?v=1708523712";
 
   const imageUrls = [
     "https://assets.ajio.com/medias/sys_master/root/20231016/kq7q/652d4ea8afa4cf41f548938a/-473Wx593H-442307005-pink-MODEL4.jpg",
@@ -238,9 +262,138 @@ const Home: React.FC = () => {
     "https://assets.ajio.com/medias/sys_master/root/20230523/8ZAp/646cc27f42f9e729d7a5a1d6/-473Wx593H-466181218-black-MODEL.jpg",
   ];
 
-  // const hoverImageStyle = {
-  //   transform: "scale(1.1)",
-  // };
+  const imageUrls2 = [
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Small-Tile-Girls-dresses.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Kids-Small-Tile-boys-t-shirts.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/5_m2RBCsP.jpg?format=webp&w=376&dpr=1.3",
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Kids-Small-Tile-OFST.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/8_wPT1ARz.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Kids-Small-Tile-boys-joggers.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/3_7Tmo8Fc.jpg?format=webp&w=376&dpr=1.3",
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/2_dMs9qPe.jpg?format=webp&w=376&dpr=1.3",
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/1_JQtfOA6.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/7_e1YnnyD.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/COLLECTION_TILES_.new.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Small-Tile-Girls-dresses.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Kids-Small-Tile-boys-t-shirts.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/5_m2RBCsP.jpg?format=webp&w=376&dpr=1.3",
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Kids-Small-Tile-OFST.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/8_wPT1ARz.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Kids-Small-Tile-boys-joggers.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/3_7Tmo8Fc.jpg?format=webp&w=376&dpr=1.3",
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/2_dMs9qPe.jpg?format=webp&w=376&dpr=1.3",
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/1_JQtfOA6.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/7_e1YnnyD.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/COLLECTION_TILES_.new.jpg?format=webp&w=376&dpr=1.3",
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Small-Tile-Girls-dresses.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Kids-Small-Tile-boys-t-shirts.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/5_m2RBCsP.jpg?format=webp&w=376&dpr=1.3",
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Kids-Small-Tile-OFST.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/8_wPT1ARz.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Kids-Small-Tile-boys-joggers.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/3_7Tmo8Fc.jpg?format=webp&w=376&dpr=1.3",
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/2_dMs9qPe.jpg?format=webp&w=376&dpr=1.3",
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/1_JQtfOA6.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/7_e1YnnyD.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/COLLECTION_TILES_.new.jpg?format=webp&w=376&dpr=1.3",
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Small-Tile-Girls-dresses.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Kids-Small-Tile-boys-t-shirts.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/5_m2RBCsP.jpg?format=webp&w=376&dpr=1.3",
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Kids-Small-Tile-OFST.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/8_wPT1ARz.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Kids-Small-Tile-boys-joggers.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/3_7Tmo8Fc.jpg?format=webp&w=376&dpr=1.3",
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/2_dMs9qPe.jpg?format=webp&w=376&dpr=1.3",
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/1_JQtfOA6.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/7_e1YnnyD.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/COLLECTION_TILES_.new.jpg?format=webp&w=376&dpr=1.3",
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Small-Tile-Girls-dresses.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Kids-Small-Tile-boys-t-shirts.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/5_m2RBCsP.jpg?format=webp&w=376&dpr=1.3",
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Kids-Small-Tile-OFST.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/8_wPT1ARz.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Kids-Small-Tile-boys-joggers.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/3_7Tmo8Fc.jpg?format=webp&w=376&dpr=1.3",
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/2_dMs9qPe.jpg?format=webp&w=376&dpr=1.3",
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/1_JQtfOA6.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/7_e1YnnyD.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/COLLECTION_TILES_.new.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Small-Tile-Girls-dresses.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Kids-Small-Tile-boys-t-shirts.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/5_m2RBCsP.jpg?format=webp&w=376&dpr=1.3",
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Kids-Small-Tile-OFST.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/8_wPT1ARz.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Kids-Small-Tile-boys-joggers.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/3_7Tmo8Fc.jpg?format=webp&w=376&dpr=1.3",
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/2_dMs9qPe.jpg?format=webp&w=376&dpr=1.3",
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/1_JQtfOA6.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/7_e1YnnyD.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/COLLECTION_TILES_.new.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Small-Tile-Girls-dresses.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Kids-Small-Tile-boys-t-shirts.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/5_m2RBCsP.jpg?format=webp&w=376&dpr=1.3",
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Kids-Small-Tile-OFST.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/8_wPT1ARz.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Kids-Small-Tile-boys-joggers.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/3_7Tmo8Fc.jpg?format=webp&w=376&dpr=1.3",
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/2_dMs9qPe.jpg?format=webp&w=376&dpr=1.3",
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/1_JQtfOA6.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/7_e1YnnyD.jpg?format=webp&w=376&dpr=1.3",
+
+    "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/COLLECTION_TILES_.new.jpg?format=webp&w=376&dpr=1.3",
+  ];
+
   const cards: Card[] = [
     {
       title: "Design Projects 1",
@@ -318,9 +471,55 @@ const Home: React.FC = () => {
     },
   ];
 
+  const cards3: Card[] = [
+    {
+      title: "Design Projects 1",
+      text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
+      image:
+        "https://www.onefridayworld.com/cdn/shop/files/1_2bd480b3-56f2-46b8-8bdd-5718829b9231.jpg?v=1708092220&width=1600",
+    },
+    {
+      title: "Design Projects 2",
+      text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
+      image:
+        "https://www.onefridayworld.com/cdn/shop/files/3_ffa9c37a-f8fc-4dab-910f-1fbe44e19c05.jpg?v=1708092389&width=1600",
+    },
+    {
+      title: "Design Projects 3",
+      text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
+      image:
+        "https://www.onefridayworld.com/cdn/shop/files/6_769e5d9e-0a47-4558-b942-5ba499a4d265.jpg?v=1708092517&width=1600",
+    },
+    {
+      title: "Design Projects 3",
+      text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
+      image:
+        "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/banner-images/Kids_Bottoms_Homepage_Banner_New.jpg?format=webp&w=1500&dpr=1.3",
+    },
+    {
+      title: "Design Projects 3",
+      text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
+      image:
+        "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/banner-images/web-banner_nwuMPZV.jpg?format=webp&w=1500&dpr=1.3",
+    },
+    {
+      title: "Design Projects 3",
+      text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
+      image:
+        "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/banner-images/Homepage-Banner_VcjaBdv.jpg?format=webp&w=1500&dpr=1.3",
+    },
+  ];
+
   return (
     <Stack spacing={20}>
-      {/* <Box position={"relative"} width={"full"} zIndex={0}>
+      <Heading textAlign={"center"}>Men</Heading>
+      <Box
+        position={"relative"}
+        width={"full"}
+        zIndex={0}
+        height={{ base: "300px", md: "600px" }}
+        overflow={"hidden"}
+      >
         <link
           rel="stylesheet"
           type="text/css"
@@ -336,7 +535,7 @@ const Home: React.FC = () => {
           variant="ghost"
           position="absolute"
           left={side}
-          top={top}
+          top={{ base: "40%", md: "50%" }}
           transform={"translate(0%, -50%)"}
           zIndex={2}
           onClick={() => slider1?.slickPrev()}
@@ -348,7 +547,7 @@ const Home: React.FC = () => {
           variant="ghost"
           position="absolute"
           right={side}
-          top={top}
+          top={{ base: "40%", md: "50%" }}
           transform={"translate(0%, -50%)"}
           zIndex={2}
           onClick={() => slider1?.slickNext()}
@@ -367,7 +566,11 @@ const Home: React.FC = () => {
               backgroundSize="contain" // Change this to "contain"
               backgroundImage={`url(${card.image})`}
             >
-              <Container size="container.lg" height="600px" position="relative">
+              <Container
+                size="container.lg"
+                height={{ base: "300px", md: "600px" }}
+                position="relative"
+              >
                 <Stack
                   spacing={6}
                   w={"full"}
@@ -377,10 +580,10 @@ const Home: React.FC = () => {
                   transform="translate(0, -50%)"
                 >
                   <Heading
-                    fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
+                    fontSize={{ base: "xl", md: "4xl", lg: "5xl" }}
                   ></Heading>
                   <Text
-                    fontSize={{ base: "md", lg: "lg" }}
+                    fontSize={{ base: "sm", lg: "lg" }}
                     color="GrayText"
                   ></Text>
                 </Stack>
@@ -388,77 +591,8 @@ const Home: React.FC = () => {
             </Box>
           ))}
         </Slider>
-      </Box> */}
-      <Box position={"relative"} width={"full"} zIndex={0} height={"600px"} overflow={"hidden"}>
-  <link
-    rel="stylesheet"
-    type="text/css"
-    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-  />
-  <link
-    rel="stylesheet"
-    type="text/css"
-    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-  />
-  <IconButton
-    aria-label="left-arrow"
-    variant="ghost"
-    position="absolute"
-    left={side}
-    top={"50%"}
-    transform={"translate(0%, -50%)"}
-    zIndex={2}
-    onClick={() => slider1?.slickPrev()}
-  >
-    <BiLeftArrowAlt size="40px" />
-  </IconButton>
-  <IconButton
-    aria-label="right-arrow"
-    variant="ghost"
-    position="absolute"
-    right={side}
-    top={"50%"}
-    transform={"translate(0%, -50%)"}
-    zIndex={2}
-    onClick={() => slider1?.slickNext()}
-  >
-    <BiRightArrowAlt size="40px" />
-  </IconButton>
-  <Slider {...settings1} ref={(slider) => setSlider1(slider)}>
-    {cards.map((card, index) => (
-      <Box
-        key={index}
-        height={"100%"}
-        width={"100%"}
-        position="relative"
-        backgroundPosition="center"
-        backgroundRepeat="no-repeat"
-        backgroundSize="contain" // Change this to "contain"
-        backgroundImage={`url(${card.image})`}
-      >
-        <Container size="container.lg" height="600px" position="relative">
-          <Stack
-            spacing={6}
-            w={"full"}
-            maxW={"lg"}
-            position="absolute"
-            top="50%"
-            transform="translate(0, -50%)"
-          >
-            <Heading
-              fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
-            ></Heading>
-            <Text
-              fontSize={{ base: "md", lg: "lg" }}
-              color="GrayText"
-            ></Text>
-          </Stack>
-        </Container>
       </Box>
-    ))}
-  </Slider>
-</Box>
-
+      <Heading textAlign={"center"}>TOP SELLING 👖</Heading>
       <Flex justifyContent="center">
         {" "}
         {/* Centering the container horizontally */}
@@ -487,82 +621,6 @@ const Home: React.FC = () => {
           </Link>
         </Flex>
       </Flex>
-      {/* <InfiniteMovingCards/> */}
-      {/* <Box paddingX={16}>
-        <Grid
-          templateColumns={{
-            base: "repeat(1, 1fr)",
-            md: "repeat(2, 1fr)",
-            lg: "repeat(4,1fr)",
-          }}
-          gap={20}
-        >
-          <GridItem
-            w="100%"
-            borderRadius={10}
-            position="relative"
-            onMouseEnter={() => setHovered1(true)}
-            onMouseLeave={() => setHovered1(false)}
-          >
-             <img
-            src={hovered1 ? image2Src : image1Src}
-            alt="Image 1"
-            style={{ ...imageStyle }}
-            />{" "}
-            <h3>City Slicker Ink Blue Boot Cut Jeans</h3>
-            <p>Rs: 5050</p>
-            <p>Size: M</p>
-          </GridItem>
-          <GridItem
-            w="100%"
-            borderRadius={10}
-            position="relative"
-            onMouseEnter={() => setHovered2(true)}
-            onMouseLeave={() => setHovered2(false)}
-          >
-            <img
-              src={hovered2 ? image4Src : image3Src}
-              alt="Image 2"
-              style={{ ...imageStyle, borderRadius: 20 }}
-            />{" "}
-            <h3>City Slicker Midnight Blue Boot Cut Jeans</h3>
-            <p>Rs: 3000</p>
-            <p>Size: M</p>
-          </GridItem>
-          <GridItem
-            w="100%"
-            borderRadius={10}
-            position="relative"
-            onMouseEnter={() => setHovered3(true)}
-            onMouseLeave={() => setHovered3(false)}
-          >
-            <img
-              src={hovered3 ? image6Src : image5Src}
-              alt="Image 3"
-              style={{ ...imageStyle, borderRadius: 20 }}
-            />{" "}
-            <h3>City Slicker Azure Blue Boot Cut Jeans</h3>
-            <p>Rs: 2019</p>
-            <p>Size: M</p>
-          </GridItem>
-          <GridItem
-            w="100%"
-            borderRadius={10}
-            position="relative"
-            onMouseEnter={() => setHovered4(true)}
-            onMouseLeave={() => setHovered4(false)}
-          >
-            <img
-              src={hovered4 ? image8Src : image7Src}
-              alt="Image 4"
-              style={{ ...imageStyle, borderRadius: 20 }}
-            />{" "}
-            <h3>City Slicker Denim Blue Boot Cut Jeans</h3>
-            <p>Rs: 4050</p>
-            <p>Size: M</p>
-          </GridItem>
-        </Grid>
-      </Box> */}
       <Box paddingX={16}>
         <Grid
           templateColumns={{
@@ -653,61 +711,6 @@ const Home: React.FC = () => {
         </Flex>
       </Flex>
       <Heading textAlign={"center"}>SEASONAL FAV`S🌤️</Heading>
-      {/* <Box paddingX={16}>
-        <Grid
-          templateColumns={{
-            base: "repeat(1, 1fr)",
-            md: "repeat(2, 1fr)",
-            lg: "repeat(4,1fr)",
-          }}
-          gap={20}
-        >
-          <GridItem w="100%">
-            <img
-              src="https://cdn.shopify.com/s/files/1/0420/7073/7058/products/Snitch_june22_0739.jpg?v=1657532764&width=600"
-              alt="Image 1"
-              style={{ ...imageStyle, borderRadius: 20 }}
-              onMouseOver={(e) =>
-                (e.currentTarget.style.transform = "scale(1.1)")
-              }
-              onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
-            />
-          </GridItem>
-          <GridItem w="100%">
-            <img
-              src="https://cdn.shopify.com/s/files/1/0420/7073/7058/products/Snitch_june22_0663.jpg?v=1657527618&width=600"
-              alt="Image 2"
-              style={{ ...imageStyle, borderRadius: 20 }}
-              onMouseOver={(e) =>
-                (e.currentTarget.style.transform = "scale(1.1)")
-              }
-              onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
-            />
-          </GridItem>
-          <GridItem w="100%">
-            <img
-              src="https://cdn.shopify.com/s/files/1/0420/7073/7058/files/4MST2235-01-M23.jpg?v=1704366399&width=600"
-              alt="Image 3"
-              style={{ ...imageStyle, borderRadius: 20 }}
-              onMouseOver={(e) =>
-                (e.currentTarget.style.transform = "scale(1.1)")
-              }
-              onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
-            />
-          </GridItem>
-          <GridItem w="100%">
-            <img
-              src="https://www.snitch.co.in/cdn/shop/files/4MST2227-01-M24.jpg?v=1707395286&width=1800"
-              alt="Image 4"
-              style={{ ...imageStyle, borderRadius: 20 }}
-              onMouseOver={(e) =>
-                (e.currentTarget.style.transform = "scale(1.1)")
-              }
-              onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
-            />
-          </GridItem>
-        </Grid>
-      </Box> */}
       <Box paddingX={16}>
         <Grid
           templateColumns={{
@@ -778,81 +781,6 @@ const Home: React.FC = () => {
           </Flex>
         </Flex>
       </Flex>
-      {/* <Box paddingX={16}>
-        <Grid
-          templateColumns={{
-            base: "repeat(1, 1fr)",
-            md: "repeat(2, 1fr)",
-            lg: "repeat(4,1fr)",
-          }}
-          gap={20}
-        >
-          <GridItem
-            w="100%"
-            borderRadius={10}
-            position="relative"
-            onMouseEnter={() => setHovered5(true)}
-            onMouseLeave={() => setHovered5(false)}
-          >
-            <img
-              src={hovered5 ? image2 : image1}
-              alt="Image 1"
-              style={{ ...imageStyle, borderRadius: 20 }}
-            />{" "}
-            <h3>City Slicker Ink Blue Boot Cut Jeans</h3>
-            <p>Rs: 5050</p>
-            <p>Size: M</p>
-          </GridItem>
-          <GridItem
-            w="100%"
-            borderRadius={10}
-            position="relative"
-            onMouseEnter={() => setHovered6(true)}
-            onMouseLeave={() => setHovered6(false)}
-          >
-            <img
-              src={hovered6 ? image4 : image3}
-              alt="Image 2"
-              style={{ ...imageStyle, borderRadius: 20 }}
-            />{" "}
-            <h3>City Slicker Midnight Blue Boot Cut Jeans</h3>
-            <p>Rs: 3000</p>
-            <p>Size: M</p>
-          </GridItem>
-          <GridItem
-            w="100%"
-            borderRadius={10}
-            position="relative"
-            onMouseEnter={() => setHovered7(true)}
-            onMouseLeave={() => setHovered7(false)}
-          >
-            <img
-              src={hovered7 ? image6 : image5}
-              alt="Image 3"
-              style={{ ...imageStyle, borderRadius: 20 }}
-            />{" "}
-            <h3>City Slicker Azure Blue Boot Cut Jeans</h3>
-            <p>Rs: 2019</p>
-            <p>Size: M</p>
-          </GridItem>
-          <GridItem
-            w="100%"
-            borderRadius={10}
-            position="relative"
-            onMouseEnter={() => setHovered8(true)}
-            onMouseLeave={() => setHovered8(false)}
-          >
-            <img
-              src={hovered8 ? image8 : image7}
-              alt="Image 4"
-              style={{ ...imageStyle, borderRadius: 20 }}
-            />{" "}
-            <h3>City Slicker Denim Blue Boot Cut Jeans</h3>
-            <p>Rs: 4050</p>
-            <p>Size: M</p>
-          </GridItem>
-        </Grid>
-      </Box> */}
       <Box paddingX={16}>
         <Grid
           templateColumns={{
@@ -949,7 +877,14 @@ const Home: React.FC = () => {
           </Link>
         </Flex>
       </Flex>
-      {/* <Box position={"relative"} width={"full"} overflow={"hidden"} zIndex={0}>
+      <Heading textAlign={"center"}>Girl/Women 👚</Heading>
+      <Box
+        position={"relative"}
+        width={"full"}
+        zIndex={0}
+        height={{ base: "300px", md: "600px" }}
+        overflow={"hidden"}
+      >
         <link
           rel="stylesheet"
           type="text/css"
@@ -965,7 +900,7 @@ const Home: React.FC = () => {
           variant="ghost"
           position="absolute"
           left={side}
-          top={top}
+          top={{ base: "40%", md: "50%" }}
           transform={"translate(0%, -50%)"}
           zIndex={2}
           onClick={() => slider2?.slickPrev()}
@@ -977,7 +912,7 @@ const Home: React.FC = () => {
           variant="ghost"
           position="absolute"
           right={side}
-          top={top}
+          top={{ base: "40%", md: "50%" }}
           transform={"translate(0%, -50%)"}
           zIndex={2}
           onClick={() => slider2?.slickNext()}
@@ -996,7 +931,11 @@ const Home: React.FC = () => {
               backgroundSize="contain" // Change this to "contain"
               backgroundImage={`url(${card.image})`}
             >
-              <Container size="container.lg" height="600px" position="relative">
+              <Container
+                size="container.lg"
+                height={{ base: "300px", md: "600px" }}
+                position="relative"
+              >
                 <Stack
                   spacing={6}
                   w={"full"}
@@ -1006,10 +945,10 @@ const Home: React.FC = () => {
                   transform="translate(0, -50%)"
                 >
                   <Heading
-                    fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
+                    fontSize={{ base: "xl", md: "4xl", lg: "5xl" }}
                   ></Heading>
                   <Text
-                    fontSize={{ base: "md", lg: "lg" }}
+                    fontSize={{ base: "sm", lg: "lg" }}
                     color="GrayText"
                   ></Text>
                 </Stack>
@@ -1017,76 +956,7 @@ const Home: React.FC = () => {
             </Box>
           ))}
         </Slider>
-      </Box> */}
-           <Box position={"relative"} width={"full"} zIndex={0} height={"600px"} overflow={"hidden"}>
-  <link
-    rel="stylesheet"
-    type="text/css"
-    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-  />
-  <link
-    rel="stylesheet"
-    type="text/css"
-    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-  />
-  <IconButton
-    aria-label="left-arrow"
-    variant="ghost"
-    position="absolute"
-    left={side}
-    top={"50%"}
-    transform={"translate(0%, -50%)"}
-    zIndex={2}
-    onClick={() => slider2?.slickPrev()}
-  >
-    <BiLeftArrowAlt size="40px" />
-  </IconButton>
-  <IconButton
-    aria-label="right-arrow"
-    variant="ghost"
-    position="absolute"
-    right={side}
-    top={"50%"}
-    transform={"translate(0%, -50%)"}
-    zIndex={2}
-    onClick={() => slider2?.slickNext()}
-  >
-    <BiRightArrowAlt size="40px" />
-  </IconButton>
-  <Slider {...settings2} ref={(slider) => setSlider2(slider)}>
-    {cards2.map((card, index) => (
-      <Box
-        key={index}
-        height={"100%"}
-        width={"100%"}
-        position="relative"
-        backgroundPosition="center"
-        backgroundRepeat="no-repeat"
-        backgroundSize="contain" // Change this to "contain"
-        backgroundImage={`url(${card.image})`}
-      >
-        <Container size="container.lg" height="600px" position="relative">
-          <Stack
-            spacing={6}
-            w={"full"}
-            maxW={"lg"}
-            position="absolute"
-            top="50%"
-            transform="translate(0, -50%)"
-          >
-            <Heading
-              fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
-            ></Heading>
-            <Text
-              fontSize={{ base: "md", lg: "lg" }}
-              color="GrayText"
-            ></Text>
-          </Stack>
-        </Container>
       </Box>
-    ))}
-  </Slider>
-</Box>
       <Flex justifyContent="center">
         {" "}
         {/* Centering the container horizontally */}
@@ -1221,59 +1091,6 @@ const Home: React.FC = () => {
           </Link>
         </Flex>
       </Flex>
-      {/* <Grid
-        templateColumns={{
-          base: "repeat(1, 1fr)",
-          md: "repeat(2, 1fr)",
-          lg: "repeat(4,1fr)",
-        }}
-        gap={20}
-      >
-        <GridItem w="100%">
-          <img
-            src="https://assets.ajio.com/medias/sys_master/root/20231124/jIIv/655fb4e3ddf779151997f7a1/-473Wx593H-466822195-blue-MODEL.jpg"
-            alt="Image 1"
-            style={{ ...imageStyle, borderRadius: 20 }}
-            onMouseOver={(e) =>
-              (e.currentTarget.style.transform = "scale(1.1)")
-            }
-            onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
-          />
-        </GridItem>
-        <GridItem w="100%">
-          <img
-            src="https://assets.ajio.com/medias/sys_master/root/20240308/kCg0/65eb149b05ac7d77bba1fbf9/-473Wx593H-467148885-coffee-MODEL.jpg"
-            alt="Image 2"
-            style={{ ...imageStyle, borderRadius: 20 }}
-            onMouseOver={(e) =>
-              (e.currentTarget.style.transform = "scale(1.1)")
-            }
-            onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
-          />
-        </GridItem>
-        <GridItem w="100%">
-          <img
-            src="https://assets.ajio.com/medias/sys_master/root/20231020/sivQ/65329abfddf77915194e9091/-473Wx593H-443021424-black-MODEL.jpg"
-            alt="Image 3"
-            style={{ ...imageStyle, borderRadius: 20 }}
-            onMouseOver={(e) =>
-              (e.currentTarget.style.transform = "scale(1.1)")
-            }
-            onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
-          />
-        </GridItem>
-        <GridItem w="100%">
-          <img
-            src="https://assets.ajio.com/medias/sys_master/root/20230912/4ZCu/64ff9760ddf7791519ce52e5/-473Wx593H-466558776-wine-MODEL.jpg"
-            alt="Image 4"
-            style={{ ...imageStyle, borderRadius: 20 }}
-            onMouseOver={(e) =>
-              (e.currentTarget.style.transform = "scale(1.1)")
-            }
-            onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
-          />
-        </GridItem>
-      </Grid> */}
       <Grid
         templateColumns={{
           base: "repeat(1, 1fr)",
@@ -1326,7 +1143,200 @@ const Home: React.FC = () => {
           </Link>
         </Flex>
       </Flex>
+      <Heading textAlign={"center"}>NEW ARRIVALS 👗 </Heading>
       <InfiniteMovingCards images={imageUrls} />
+      <Heading textAlign={"center"}> Kids</Heading>
+      <Box
+        position={"relative"}
+        width={"full"}
+        zIndex={0}
+        height={{ base: "300px", md: "600px" }}
+        overflow={"hidden"}
+      >
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+        />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+        />
+        <IconButton
+          aria-label="left-arrow"
+          variant="ghost"
+          position="absolute"
+          left={side}
+          top={{ base: "40%", md: "50%" }}
+          transform={"translate(0%, -50%)"}
+          zIndex={2}
+          onClick={() => slider3?.slickPrev()}
+        >
+          <BiLeftArrowAlt size="40px" />
+        </IconButton>
+        <IconButton
+          aria-label="right-arrow"
+          variant="ghost"
+          position="absolute"
+          right={side}
+          top={{ base: "40%", md: "50%" }}
+          transform={"translate(0%, -50%)"}
+          zIndex={2}
+          onClick={() => slider3?.slickNext()}
+        >
+          <BiRightArrowAlt size="40px" />
+        </IconButton>
+        <Slider {...settings3} ref={(slider) => setSlider3(slider)}>
+          {cards3.map((card, index) => (
+            <Box
+              key={index}
+              height={"100%"}
+              width={"100%"}
+              position="relative"
+              backgroundPosition="center"
+              backgroundRepeat="no-repeat"
+              backgroundSize="contain" // Change this to "contain"
+              backgroundImage={`url(${card.image})`}
+            >
+              <Container
+                size="container.lg"
+                height={{ base: "300px", md: "600px" }}
+                position="relative"
+              >
+                <Stack
+                  spacing={6}
+                  w={"full"}
+                  maxW={"lg"}
+                  position="absolute"
+                  top="50%"
+                  transform="translate(0, -50%)"
+                >
+                  <Heading
+                    fontSize={{ base: "xl", md: "4xl", lg: "5xl" }}
+                  ></Heading>
+                  <Text
+                    fontSize={{ base: "sm", lg: "lg" }}
+                    color="GrayText"
+                  ></Text>
+                </Stack>
+              </Container>
+            </Box>
+          ))}
+        </Slider>
+      </Box>
+      <Flex justifyContent="center">
+        {" "}
+        {/* Centering the container horizontally */}
+        <Flex
+          minWidth="max-content"
+          alignItems="center"
+          gap="10"
+          className="flex-wrap"
+        >
+          {" "}
+          <Link to="/kidS">
+            <button className="relative inline-flex h-12  w-full sm:w-36 md:w-full lg:w-48 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 transition duration-300 ease-in-out transform hover:scale-105 shadow-md">
+              <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+              <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-black px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
+                view All
+              </span>
+            </button>
+          </Link>
+          <Link to="/kidS">
+            <button className="relative inline-flex h-12  w-full sm:w-36 md:w-full lg:w-48 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 transition duration-300 ease-in-out transform hover:scale-105 shadow-md">
+              <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+              <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-white px-3 py-1 text-sm font-medium text-black backdrop-blur-3xl">
+                Most Trending
+              </span>
+            </button>
+          </Link>
+        </Flex>
+      </Flex>
+      <Heading textAlign={"center"}>TOP SELLING ✨</Heading>
+      <Box paddingX={16}>
+        <Grid
+          templateColumns={{
+            base: "repeat(1, 1fr)",
+            md: "repeat(2, 1fr)",
+            lg: "repeat(4,1fr)",
+          }}
+          gap={20}
+        >
+          <GridItem
+            w="100%"
+            borderRadius={10}
+            position="relative"
+            onMouseEnter={() => setHoveredw(true)}
+            onMouseLeave={() => setHoveredw(false)}
+            className="image-item"
+          >
+            <img
+              src={hoveredW ? imageKid2 : imageKid1}
+              alt="Image 1"
+              className="image-style"
+            />
+            <h3>City Slicker Ink Blue Boot Cut Jeans</h3>
+            <p>Rs: 5050</p>
+            <p>Size: M</p>
+          </GridItem>
+          <GridItem
+            w="100%"
+            borderRadius={10}
+            position="relative"
+            onMouseEnter={() => setHoveredX(true)}
+            onMouseLeave={() => setHoveredX(false)}
+            className="image-item"
+          >
+            <img
+              src={hoveredX ? imageKid4 : imageKid3}
+              alt="Image 2"
+              className="image-style"
+            />
+            <h3>City Slicker Midnight Blue Boot Cut Jeans</h3>
+            <p>Rs: 3000</p>
+            <p>Size: M</p>
+          </GridItem>
+
+          <GridItem
+            w="100%"
+            borderRadius={10}
+            position="relative"
+            onMouseEnter={() => setHoveredY(true)}
+            onMouseLeave={() => setHoveredY(false)}
+            className="image-item"
+          >
+            <img
+              src={hoveredY ? imageKid6 : imageKid5}
+              alt="Image 3"
+              className="image-style"
+            />
+            <h3>City Slicker Azure Blue Boot Cut Jeans</h3>
+            <p>Rs: 2019</p>
+            <p>Size: M</p>
+          </GridItem>
+
+          <GridItem
+            w="100%"
+            borderRadius={10}
+            position="relative"
+            onMouseEnter={() => setHoveredZ(true)}
+            onMouseLeave={() => setHoveredZ(false)}
+            className="image-item"
+          >
+            <img
+              src={hoveredZ ? imageKid8 : imageKid7}
+              alt="Image 4"
+              className="image-style"
+            />
+            <h3>City Slicker Denim Blue Boot Cut Jeans</h3>
+            <p>Rs: 4050</p>
+            <p>Size: M</p>
+          </GridItem>
+        </Grid>
+      </Box>
+      <Heading textAlign={"center"}>LATEST COLLECTION️‍🔥</Heading>
+      <InfiniteMovingCards images={imageUrls2} />
       <Box>
         <hr />
         {/* <InfinityMovingCard/> */}

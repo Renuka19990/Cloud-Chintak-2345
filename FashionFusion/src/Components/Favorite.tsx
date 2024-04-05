@@ -1,19 +1,7 @@
 import './Favorite.css';
 import React, { useEffect, useState } from 'react';
-import { CircularProgress } from '@chakra-ui/react';
+import { CircularProgress, Center, Flex, useColorModeValue, Button, useToast, Stack, Image, Heading, Text, Badge, Container, Box, Grid } from '@chakra-ui/react';
 import axios from 'axios';
-
-import { Image,  Button } from '@chakra-ui/react';
-
-
-import {
-  Box,
-  Heading,
-  Container,
-  Text,
-  Stack,
- 
-} from '@chakra-ui/react';
 
 interface Product {
   name: string;
@@ -42,7 +30,8 @@ const MyComponentF: React.FC = () => {
   const [items, setItems] = useState<Item[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [showSuccessMessage, setShowSuccessMessage] = useState<boolean>(false);
+
+  const toast = useToast();
 
   useEffect(() => {
     fetchData()
@@ -56,15 +45,22 @@ const MyComponentF: React.FC = () => {
       });
   }, []);
 
+  const bgColor = useColorModeValue('white', 'gray.800');
+  const handleDeleteItem = (itemId: number) => {
+    setItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
+  };
   const handleAddToCart = async (product: Product) => {
     try {
       await axios.post('https://mock-server-app-1.onrender.com/cart', {
         product,
       });
-      setShowSuccessMessage(true);
-      setTimeout(() => {
-        setShowSuccessMessage(false);
-      }, 3000); 
+      toast({
+        title: "Item Added to Cart",
+        description: "The item has been successfully added to your cart.",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
     } catch (error) {
       console.error('Error adding to cart:', error);
     }
@@ -85,19 +81,21 @@ const MyComponentF: React.FC = () => {
   if (items.length === 0) {
     return (
       <div>
-        <Container maxW={'3xl'}>
+        <Container maxW={"3xl"}>
           <Stack
             as={Box}
-            textAlign={'center'}
+            textAlign={"center"}
             spacing={{ base: 8, md: 14 }}
-            py={{ base: 20, md: 36 }}>
+            py={{ base: 20, md: 36 }}
+          >
             <Heading
               fontWeight={600}
-              fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
-              lineHeight={'110%'}>
-              WishList Is Empty <br />
-              <Text as={'span'} color={'green.400'}>
-                😊😊
+              fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
+              lineHeight={"110%"}
+            >
+              Wishlist Is Empty <br />
+              <Text as={"span"} color={"green.400"}>
+                😓😓
               </Text>
             </Heading>
           </Stack>
@@ -106,33 +104,44 @@ const MyComponentF: React.FC = () => {
     );
   }
 
-  
-
   return (
-    <Box className='card-grid'>
-      {items.map((item) => (
-         item.product && (
-        <Box className='cardF' key={item.id} borderWidth="1px" borderRadius="lg" overflow="hidden">
-          <Image src={item.product.imageURL} alt={item.product.name} className='card-img-topF' />
-          <Box p="6">
-            <Text fontWeight="bold" fontSize="xl" mb="2">{item.product.name}</Text>
-            <Text fontSize="md" color="gray.600" mb="4">{item.product.description}</Text>
-            <Text fontSize="lg" color="green.500" mb="2">Price: ${item.product.price}</Text>
-            <Text fontSize="lg" color="blue.500" mb="2">Stock: {item.product.stock}</Text>
-            <Text fontSize="lg" color="purple.500" mb="4">Rating: {item.product.rating}</Text>
-            <Button colorScheme="blue" onClick={() => handleAddToCart(item.product)}>Add To Cart</Button>
-          </Box>
-        </Box>
-      )))}
-      {showSuccessMessage && (
-        <Box className="success-message" mt="4" p="4" bg="green.100" borderWidth="1px" borderColor="green.400" borderRadius="md">
-          Item added to cart successfully. 🎉
-        </Box>
-      )}
-    </Box>
+    <Container maxW="container.xxxl">
+      <Flex gap={4} flexWrap="wrap">
+        {items.map((item) => (
+          item.product && (
+            <Box key={item.id} p={6} w={['100%', '48%', '32%']} bg={bgColor} boxShadow={'2xl'} rounded={'lg'} mb={8}>
+              <Flex>
+                <Box mr={4}>
+                  <img style={{ borderRadius: '8px' }} height={230} width={282} src={item.product.imageURL} alt={item.product.name} />
+                </Box>
+                <Stack pt={10} align={'start'}>
+                  <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
+                    Brand
+                  </Text>
+                  <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
+                    {item.product.name}
+                  </Heading>
+                  <Text fontWeight={800} fontSize={'xl'}>
+                    ${item.product.price}
+                  </Text>
+                  <Text textDecoration={'line-through'} color={'gray.600'}>
+                    ${item.product.price}
+                  </Text>
+                  <Text fontSize={'sm'}>{item.product.description}</Text>
+                  <Text fontSize={'sm'}>Stock: {item.product.stock}</Text>
+                  <Text fontSize={'sm'}>Rating: {item.product.rating}</Text>
+                  <Flex gap={2}>  <Button colorScheme="red"  onClick={() => handleDeleteItem(item.id)}
+                    >Remove</Button>
+                  <Button colorScheme="teal" onClick={() => handleAddToCart(item.product)}>Add To Cart</Button></Flex>
+                
+                </Stack>
+              </Flex>
+            </Box>
+          )
+        ))}
+      </Flex>
+    </Container>
   );
-      }
+};
 
 export default MyComponentF;
-
-
