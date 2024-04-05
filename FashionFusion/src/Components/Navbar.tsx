@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import {
   Box,
@@ -32,7 +32,7 @@ const Navbar: React.FC = () => {
   const [placement] = useState<DrawerPlacement>("left");
   const [isNormalScreen] = useMediaQuery("(min-width: 768px)"); // Check if screen width is greater than or equal to 768px
   const { colorMode, toggleColorMode } = useColorMode();
-
+  const [cartLength, setCartLength] = useState(0);
   interface SocialButtonProps {
     label: string;
     href: string;
@@ -89,7 +89,27 @@ const Navbar: React.FC = () => {
       </chakra.button>
     );
   };
+  useEffect(() => {
+    // Fetch cart data from API
+    fetchCartData();
+  }, []);
 
+  const fetchCartData = async () => {
+    try {
+      const response = await fetch("https://mock-server-app-1.onrender.com/cart");
+      if (!response.ok) {
+        throw new Error("Failed to fetch cart data");
+      }
+      const data = await response.json();
+      // Assuming your API returns cart data in the form of an array
+      setCartLength(data.length);
+    } catch (error) {
+      console.error("Error fetching cart data:", error);
+      // Optionally, you can set a default cart length or handle the error in another way
+      setCartLength(0); // Set cart length to 0 or handle the error
+    }
+  };
+  
   return (
     <Box
       bg={useColorModeValue("white", "black")}
@@ -191,10 +211,29 @@ const Navbar: React.FC = () => {
             </Box>
           </Link>
           <Link to="/cart">
-            <Box fontSize="xx-large">
-              <CiShoppingCart />
-            </Box>
-          </Link>
+          <Box fontSize="xx-large" position="relative">
+  <CiShoppingCart />
+  {cartLength > 0 && ( // Only show cart length if it's greater than 0
+    <Box
+      position="absolute"
+      top="-8px"
+      right="-8px"
+      bg="red.400"
+      color="white"
+      borderRadius="full"
+      width="20px"
+      height="20px"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      fontSize="sm"
+    >
+      {cartLength}
+    </Box>
+  )}
+</Box>
+
+  </Link>
           <Button onClick={toggleColorMode}>
             {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
           </Button>
