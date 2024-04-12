@@ -32,7 +32,7 @@ Project-Presentation Link:https://youtu.be/PXXACu878Fs
  
   Responsive Design: Enjoy a consistent and visually appealing experience across various devices.
 
-- User Profiles: guests can create profiles and see exclusive collection.
+- User Profiles: Guests can create profiles and see exclusive collection.
 - Admin Profile: Admin can handle Server Data
 
 ## Admin credentials
@@ -47,9 +47,9 @@ Detailed instructions on how to install, configure, and get the project running.
 ```bash
 git clone https://github.com/Renuka19990/Cloud-Chintak-2345.git
 
-cd FashionFusion
+cd Cloud-Chintak-2345/FashionFusion
 
-npm i
+npm install
 
 ```
 
@@ -59,15 +59,13 @@ To start Application
 
 ```bash
 npm run dev
-or
-Vite
+
 ```
 
-Include screenshots as necessary.
+Snapshot of Website
 <img src='FashionFusion/public/LandingPage1.png' alt=""/>
-![Start]()
 
-## Application ScreenShots
+## Application Snapshots
 ![landing](FashionFusion/public/LandingPage1.png)
 ![landing](FashionFusion/public/LandingPage.png)
 ![login](FashionFusion/public/LoginPage.png)
