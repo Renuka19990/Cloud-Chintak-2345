@@ -10,7 +10,7 @@ Full Stack
 
 ## Deplolyed App
 
-Frontend:https://mock-server-app-1.onrender.com/
+Frontend:https://fashionfusion04.netlify.app/
 Backend: https://mock-server-app-1.onrender.com/
 DataBase: https://mock-server-app-1.onrender.com/
 
@@ -107,12 +107,11 @@ List and provide a brief overview of the technologies used in the project.
 - Redux-toolkit
 - json-server
 - Other libraries/modules
--
 
 ## Contributors
 
 - Rnuka Jagrwal--fw29_183 
 - Aman Chaubey -- ft30_113
-- Shubham Keshari  -- ft30_307
-- Balaji  -- fw28_220
-- Mayank  --fw29_180
+- Shubham -- ft30_307
+- Balaji Deshmukh-- fw28_220
+- Mayank Khandelwal --fw29_180
