@@ -6,19 +6,39 @@ FashionFusion is designed to provide a seamless and enjoyable shopping experienc
 
 ## Project Type
 
-Full Stack
+Frontend | Backend | Fullstack
 
 ## Deplolyed App
 
-Frontend:https://fashionfusion04.netlify.app/
+Frontend: https://fashionfusion04.netlify.app/
 
 Backend: https://mock-server-app-1.onrender.com/
 
 DataBase: https://mock-server-app-1.onrender.com/
 
+## Directory Structure
+
+Cloud-Chintak-2345/
+├── README.md
+└── FashionFusion/
+    ├── Public/
+    ├── src/
+    │   ├── Components/
+    │   ├── Pages/
+    │   ├── Redux/
+    │   ├── Routes/
+    │   ├── assets/
+    │   ├── hooks/
+    │   ├── utils/
+    │   ├── App.css
+    │   ├── App.tsx
+    │   ├── index.css
+    |   └── main.tsx
+  
+
 ## Video Walkthrough of the project
 
-Project-Presentation Link:https://youtu.be/PXXACu878Fs
+Project-Presentation Link: https://youtu.be/PXXACu878Fs
 
 
 ## Features
@@ -63,11 +83,10 @@ npm run dev
 ```
 
 Snapshot of Website
-<img src='FashionFusion/public/LandingPage1.png' alt=""/>
+<img src='FashionFusion/public/LandingPage1.png' alt="Landing Page Image"/>
 
 ## Application Snapshots
 ![landing](FashionFusion/public/LandingPage1.png)
-![landing](FashionFusion/public/LandingPage.png)
 ![login](FashionFusion/public/LoginPage.png)
 ![men](FashionFusion/public/men.png)
 ![women](FashionFusion/public/women.png)
@@ -110,8 +129,8 @@ List and provide a brief overview of the technologies used in the project.
 
 ## Contributors
 
-- Renuka Jagrwal--fw29_183 
+- Renuka Jagrwal -- fw29_183 
 - Aman Chaubey -- ft30_113
 - Shubham -- ft30_307
-- Balaji Deshmukh-- fw28_220
-- Mayank Khandelwal --fw29_180
+- Balaji Deshmukh -- fw28_220
+- Mayank Khandelwal -- fw29_180
