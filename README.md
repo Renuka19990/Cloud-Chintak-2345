@@ -18,65 +18,6 @@ DataBase: https://mock-server-app-1.onrender.com/
 
 Project-Presentation Link:https://youtu.be/PXXACu878Fs
 
-## Directory Structure
-## Directory Structure
-frontend/
-├─ src/
-│  ├─ components/
-│  │  ├─ Admin/
-│  │  │  ├─ Admin.tsx
-│  │  │  ├─ Admin.css
-│  │  │  ├─ Admin.test.tsx
-│  │  ├─ Cart/
-│  │  │  ├─ Cart.tsx
-│  │  │  ├─ Cart.css
-│  │  │  ├─ Cart.test.tsx
-│  │  ├─ Favorite/
-│  │  │  ├─ Favorite.tsx
-│  │  │  ├─ Favorite.css
-│  │  │  ├─ Favorite.test.tsx
-│  │  ├─ Navbar/
-│  │  │  ├─ Navbar.tsx
-│  │  │  ├─ Navbar.css
-│  │  │  ├─ Navbar.test.tsx
-│  │  ├─ Sidebar/
-│  │  │  ├─ Sidebar.tsx
-│  │  │  ├─ Sidebar.css
-│  │  │  ├─ Sidebar.test.tsx
-│  │  ├─ Productlist/
-│  │  │  ├─ Productlist.tsx
-│  │  │  ├─ Productlist.css
-│  │  │  ├─ Productlist.test.tsx
-│  ├─ hooks/
-│  │  ├─ Debounce.ts
-│  │  ├─ usePagination.ts
-│  │  ├─ useLocalStorage.ts
-│  ├─ pages/
-│  │  ├─ Home/
-│  │  │  ├─ Home.tsx
-│  │  │  ├─ Home.css
-│  │  │  ├─ Home.test.tsx
-│  │  ├─ Men/
-│  │  │  ├─ Men.tsx
-│  │  │  ├─ Men.css
-│  │  │  ├─ Men.test.tsx
-│  │  ├─ Women/
-│  │  │  ├─ Women.tsx
-│  │  │  ├─ Women.css
-│  │  │  ├─ Women.test.tsx
-│  │  ├─ Kid/
-│  │  │  ├─ Kid.tsx
-│  │  │  ├─ Kid.css
-│  │  │  ├─ Kid.test.tsx
-│  ├─ redux/
-│  │  ├─ actionTypes.ts
-│  │  ├─ actions.ts
-│  │  ├─ reducers.ts
-│  │  ├─ store.ts
-│  ├─ routes/
-│  │  ├─ AllRoutes.tsx
-│  │  ├─ PrivateRoute.tsx
-├─ app.tsx
 
 ## Features
   Intuitive User Interface: A clean and user-friendly interface to enhance the browsing and shopping experience.
