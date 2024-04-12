@@ -11,7 +11,9 @@ Full Stack
 ## Deplolyed App
 
 Frontend:https://fashionfusion04.netlify.app/
+
 Backend: https://mock-server-app-1.onrender.com/
+
 DataBase: https://mock-server-app-1.onrender.com/
 
 ## Video Walkthrough of the project
@@ -110,7 +112,7 @@ List and provide a brief overview of the technologies used in the project.
 
 ## Contributors
 
-- Rnuka Jagrwal--fw29_183 
+- Renuka Jagrwal--fw29_183 
 - Aman Chaubey -- ft30_113
 - Shubham -- ft30_307
 - Balaji Deshmukh-- fw28_220
