@@ -17,7 +17,7 @@ Backend: https://mock-server-app-1.onrender.com/
 DataBase: https://mock-server-app-1.onrender.com/
 
 ## Directory Structure
-
+```
 Cloud-Chintak-2345/
 ├── README.md
 └── FashionFusion/
@@ -34,7 +34,7 @@ Cloud-Chintak-2345/
     │   ├── App.tsx
     │   ├── index.css
     |   └── main.tsx
-  
+  ```
 
 ## Video Walkthrough of the project
 
