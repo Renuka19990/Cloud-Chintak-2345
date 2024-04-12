@@ -20,33 +20,32 @@ Project-Presentation Link:https://youtu.be/PXXACu878Fs
 
 ## Directory Structure
 ## Directory Structure
-FashionFusion/
-├─ bac
-├─ frontend/
-│  ├─ src/
-│  |  ├─ components/
-│  |  | ├─ Admin.tsx
-│  |  | ├─ Cart.tsx
-│  |  | ├─ Favorite.tsx
-│  |  | ├─ Navbar.tsx
-│  |  | ├─ Sidebar.tsx
-│  |  | ├─ Productlist.tsx
-│  |  ├─ hooks/
-│  |  | ├─ Debounce.ts
-│  |  ├─ Pages/
-│  |  | ├─ Home.tsx
-│  |  | ├─ Men.tsx
-│  |  | ├─ Women.tsx
-│  |  | ├─ Kid.tsx
-│  |  ├─ Redux/
-│  |  | ├─ ActionTypes.ts
-│  |  | ├─ action.ts
-│  |  | ├─ reducers.ts
-│  |  | ├─ Store.ts
-│  |  ├─ Routes/
-│  |  | ├─ AllRoutes.tsx
-│  |  | ├─ PrivateRoute.tsx
-│  ├─ app.tsx
+frontend/
+├─ src/
+│  ├─ components/
+│  │  ├─ Admin.tsx
+│  │  ├─ Cart.tsx
+│  │  ├─ Favorite.tsx
+│  │  ├─ Navbar.tsx
+│  │  ├─ Sidebar.tsx
+│  │  ├─ Productlist.tsx
+│  ├─ hooks/
+│  │  ├─ Debounce.ts
+│  ├─ Pages/
+│  │  ├─ Home.tsx
+│  │  ├─ Men.tsx
+│  │  ├─ Women.tsx
+│  │  ├─ Kid.tsx
+│  ├─ Redux/
+│  │  ├─ ActionTypes.ts
+│  │  ├─ action.ts
+│  │  ├─ reducers.ts
+│  │  ├─ Store.ts
+│  ├─ Routes/
+│  │  ├─ AllRoutes.tsx
+│  │  ├─ PrivateRoute.tsx
+├─ app.tsx
+
 ## Features
   Intuitive User Interface: A clean and user-friendly interface to enhance the browsing and shopping experience.
    
