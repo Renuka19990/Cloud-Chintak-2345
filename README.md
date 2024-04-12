@@ -23,25 +23,57 @@ Project-Presentation Link:https://youtu.be/PXXACu878Fs
 frontend/
 ├─ src/
 │  ├─ components/
-│  │  ├─ Admin.tsx
-│  │  ├─ Cart.tsx
-│  │  ├─ Favorite.tsx
-│  │  ├─ Navbar.tsx
-│  │  ├─ Sidebar.tsx
-│  │  ├─ Productlist.tsx
+│  │  ├─ Admin/
+│  │  │  ├─ Admin.tsx
+│  │  │  ├─ Admin.css
+│  │  │  ├─ Admin.test.tsx
+│  │  ├─ Cart/
+│  │  │  ├─ Cart.tsx
+│  │  │  ├─ Cart.css
+│  │  │  ├─ Cart.test.tsx
+│  │  ├─ Favorite/
+│  │  │  ├─ Favorite.tsx
+│  │  │  ├─ Favorite.css
+│  │  │  ├─ Favorite.test.tsx
+│  │  ├─ Navbar/
+│  │  │  ├─ Navbar.tsx
+│  │  │  ├─ Navbar.css
+│  │  │  ├─ Navbar.test.tsx
+│  │  ├─ Sidebar/
+│  │  │  ├─ Sidebar.tsx
+│  │  │  ├─ Sidebar.css
+│  │  │  ├─ Sidebar.test.tsx
+│  │  ├─ Productlist/
+│  │  │  ├─ Productlist.tsx
+│  │  │  ├─ Productlist.css
+│  │  │  ├─ Productlist.test.tsx
 │  ├─ hooks/
 │  │  ├─ Debounce.ts
-│  ├─ Pages/
-│  │  ├─ Home.tsx
-│  │  ├─ Men.tsx
-│  │  ├─ Women.tsx
-│  │  ├─ Kid.tsx
-│  ├─ Redux/
-│  │  ├─ ActionTypes.ts
-│  │  ├─ action.ts
+│  │  ├─ usePagination.ts
+│  │  ├─ useLocalStorage.ts
+│  ├─ pages/
+│  │  ├─ Home/
+│  │  │  ├─ Home.tsx
+│  │  │  ├─ Home.css
+│  │  │  ├─ Home.test.tsx
+│  │  ├─ Men/
+│  │  │  ├─ Men.tsx
+│  │  │  ├─ Men.css
+│  │  │  ├─ Men.test.tsx
+│  │  ├─ Women/
+│  │  │  ├─ Women.tsx
+│  │  │  ├─ Women.css
+│  │  │  ├─ Women.test.tsx
+│  │  ├─ Kid/
+│  │  │  ├─ Kid.tsx
+│  │  │  ├─ Kid.css
+│  │  │  ├─ Kid.test.tsx
+│  ├─ redux/
+│  │  ├─ actionTypes.ts
+│  │  ├─ actions.ts
 │  │  ├─ reducers.ts
-│  │  ├─ Store.ts
-│  ├─ Routes/
+│  │  ├─ store.ts
+│  ├─ routes/
 │  │  ├─ AllRoutes.tsx
 │  │  ├─ PrivateRoute.tsx
 ├─ app.tsx
