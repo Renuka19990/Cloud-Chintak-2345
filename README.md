@@ -6,7 +6,7 @@ FashionFusion is designed to provide a seamless and enjoyable shopping experienc
 
 ## Project Type
 
-Frontend | Backend | Fullstack
+Frontend
 
 ## Deplolyed App
 
