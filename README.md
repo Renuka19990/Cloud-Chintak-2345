@@ -14,8 +14,6 @@ Frontend: https://fashionfusion04.netlify.app/
 
 Backend: https://mock-server-app-1.onrender.com/
 
-DataBase: https://mock-server-app-1.onrender.com/
-
 ## Directory Structure
 ```
 Cloud-Chintak-2345/
